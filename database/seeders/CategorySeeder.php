@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Category;
 
 class CategorySeeder extends Seeder
 {
@@ -13,6 +14,13 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        Category::insert(
+            [
+                ['category_name' => 'Outer'],
+                ['category_name' => 'Tops'],
+                ['category_name' => 'Bottoms'],
+                ['category_name' => 'Accessories']
+            ]
+            );
     }
 }

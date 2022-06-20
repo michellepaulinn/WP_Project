@@ -18,6 +18,8 @@ class CreateItemsTable extends Migration
             $table->foreignId('category_id');
             $table->string('item_name');
             $table->integer('item_price');
+            $table->longText('description');
+            $table->boolean('item_status');
             $table->timestamps();
         });
     }

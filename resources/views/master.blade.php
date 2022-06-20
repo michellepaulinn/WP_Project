@@ -14,6 +14,9 @@
             font-family: 'Times New Roman', Times, serif;
             color: black;
         }
+        .ctg{
+            
+        }
     </style>
   </head>
   <body>
@@ -67,19 +70,12 @@
                 </div>
             </div>
         </div>
-        <div class="ctg d-flex col-md-8">
-            <div class="ctg-item">
-                <a href="">Outer</a>
-            </div>
-            <div class="ctg-item">
-                <a href=""> Tops</a>
-            </div>
-            <div class="ctg-item">
-                <a href="">Bottoms</a>
-            </div>
-            <div class="ctg-item">
-                <a href="">Accessories</a>
-            </div>
+        <div class="ctg d-flex justify-content-center w-100">
+            @foreach($category as $ctg)
+                <div class="ctg-item mx-2">
+                    <a href="/category/{{$ctg->id}}">{{$ctg->category_name}}</a>
+                </div>
+            @endforeach
         </div>
     </header>
     <div class="container mt-4">
