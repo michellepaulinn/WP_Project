@@ -12,21 +12,25 @@ class Item extends Model
 {
     use HasFactory;
 
-    protected $guarded=['id'];
+    protected $guarded = [];
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function cartDetail(){
+    public function cartDetail()
+    {
         return $this->belongsTo(cartDetail::class);
     }
 
-    public function itemImages(){
+    public function itemImages()
+    {
         return $this->hasMany(itemImages::class);
     }
 
-    public function transactionDetails(){
+    public function transactionDetails()
+    {
         return $this->belongsTo(TransactionDetail::class);
     }
 }
