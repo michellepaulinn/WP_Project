@@ -27,7 +27,6 @@ class AccountSeeder extends Seeder
                 'account_name' => 'User 1',
                 'account_email' => 'User1@test.com',
                 'account_password' => Hash::make('User123')
-            
             ]
         ]);
     }

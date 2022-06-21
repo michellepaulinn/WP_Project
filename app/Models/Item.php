@@ -26,7 +26,7 @@ class Item extends Model
 
     public function itemImages()
     {
-        return $this->hasMany(itemImages::class);
+        return $this->hasMany(itemImage::class);
     }
 
     public function transactionDetails()
