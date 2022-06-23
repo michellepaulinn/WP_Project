@@ -16,10 +16,10 @@ class RegisterController extends Controller
         if($request->account_password != $request->account_cPassword){
             return redirect()->back()->with('error','Password and Confirm Password must match');
         }
-        $user = Account::create([
+        $user = Account::insert([
             'account_name' => $request->account_name,
             'account_email' => $request->account_email,
-            'account_password' => $request->account_password,
+            'account_password' => bcrypt($request->account_password),
             'role_id' => '2'
         ]);
         if($user){
