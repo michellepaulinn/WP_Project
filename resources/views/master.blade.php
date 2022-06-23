@@ -78,7 +78,9 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg-end">
                         <li><a class="dropdown-item" href="/login">Log in</a></li>
-                        <li><div class="dropdown-header">Nama Username</div></li>
+                        <li><div class="dropdown-header">
+                            User
+                        </div></li>
                         <li><a class="dropdown-item" href="#">Log out</a></li>
                     </ul>
                 </div>

@@ -12,13 +12,33 @@ class ItemController extends Controller
         $items = Item::where('item_name', 'LIKE', "%$req->keyword%")->get();
         //->paginate(15);
         return view('searchItem',[
-            "items" => $items
+            "items" => $items,
+            "name" => $req->account_name
         ]);
     }
 
     public function itemDetail($id){
         $item = Item::find($id);
         $itemImage = $item->itemImages()->first();
-        return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage]);
+        return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage,"name" ]);
+    }
+
+    //CRUD 
+    public function view_create(){
+
+    }
+    public function create(){
+
+    }
+
+    //Update & Delete (UD)
+    public function view_update(){
+
+    }
+    public function update(){
+
+    }
+    public function delete(){
+
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function homepage(){
+    public function homepage(Request $request){
         $category = Category::all();
         return view('homepage', ['category'=>$category]);
     }
