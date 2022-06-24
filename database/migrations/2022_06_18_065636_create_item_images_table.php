@@ -9,7 +9,7 @@ class CreateItemImagesTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void
+    * @return void
      */
     public function up()
     {

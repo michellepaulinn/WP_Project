@@ -27,10 +27,11 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'form']);
 Route::post('/register-process', [RegisterController::class, 'register']);
 
-Route::prefix('/admin')->group(function() {
-    Route::get('manage-item', [AdminController::class, 'manageItem']);
-    Route::get('add-item', [AdminController::class, 'addItem']);
-});
+    //Frontend
+    Route::get('manage-item', [ItemController::class, 'view_update']);
+    Route::get('add-item', [ItemController::class, 'view_create']);
+    //Backend
+    Route::post('create-item',[ItemController::class,'create_item']);
 
 Route::get('/cart', [CartController::class, 'viewCart']);
 
