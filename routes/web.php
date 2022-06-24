@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AccountController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -24,6 +23,7 @@ Route::get('/', [PageController::class, 'homepage']);
 
 Route::get('/login', [LoginController::class, 'form']);
 Route::post('/login-process', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'form']);
 Route::post('/register-process', [RegisterController::class, 'register']);
 

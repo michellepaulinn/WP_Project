@@ -17,7 +17,7 @@ class CreateAccountsTable extends Migration
             $table->id();
             $table->foreignId('role_id');
             $table->string('account_name');
-            $table->string('account_email');
+            $table->string('account_email')->unique();
             $table->string('account_password');
             $table->timestamps();
         });
