@@ -41,7 +41,7 @@ class ItemController extends Controller
             'item_name' => $req->item_name,
             'item_price' => $req->item_price,
             'description' => $req->description,
-            'category_id' => '1',
+            'category_id' => $req->category,
             'item_status' => true
         ]);
         $extension = $req->image->extension();
@@ -66,9 +66,29 @@ class ItemController extends Controller
 
     //Belum test bcs gak ada view
     public function update_item(Request $req,$id){
+        $req->validate([
+            'item_name' => 'required',
+            'item_price' => 'required',
+            'description' => 'required',
+            'category' => 'required',
+            'image' => 'required|file|image'
+        ]);
 
+        $item = Item::findOrFail($id);
+        $item->item_name = $req->item_name;
+        $item->item_price = $req->item_price;
+        $item->description = $req->description;
+        $item->category_id = $req->category;
+        $item->item_status =  true;
+        $item->save();
+        //logic item image belom
+        return redirect('/');
     }
-    public function delete_item(){
-
+    public function delete_item(Request $req,$id){
+        $item = Item::findOrFail($id);
+        $item->delete();
+        $itemImage = ItemImage::where('item_id',$id)->first();
+        $itemImage->delete();
+        return redirect('/');
     }
 }
