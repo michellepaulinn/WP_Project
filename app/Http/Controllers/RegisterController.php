@@ -18,6 +18,11 @@ class RegisterController extends Controller
             'account_email' => 'required | email',
             'account_password' => 'required',
             'account_cPassword' => 'required'
+        ],[
+            'account_name.required' => 'The name field is required',
+            'account_email.required' => 'The email field is required',
+            'account_password.required' => 'The password field is required',
+            'account_cPassword.required' => 'The confirm password field is required'
         ]);
 
         if($request->account_password != $request->account_cPassword){

@@ -23,7 +23,7 @@
                 @endif
 
                 @csrf
-                <h2 class="fw-bold mb-5 text-uppercase text-center">Register</h2>
+                <h2 class="fw-bold mb-4 text-uppercase text-center">Register</h2>
                 <div class="form-outline form-white mb-4">
                     <label class="form-label" for="account_name">Name</label>
                     <input type="name" name="account_name" id="account_name" class="form-control form px-5-control-lg">
