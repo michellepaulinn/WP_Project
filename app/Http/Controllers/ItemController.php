@@ -44,15 +44,15 @@ class ItemController extends Controller
             'category_id' => '1',
             'item_status' => true
         ]);
-        $item_file_name = $req->image->getClientOriginalName();
+        $extension = $req->image->extension();
+        $item_file_name = time().'.'.$extension; 
         $req->image->move(public_path('photos'), $item_file_name);
-
         $itemImage = ItemImage::insert([
             'item_id' => $item->id,
            'item_image' => $item_file_name
         ]);
-        dd($item);
-        if($item){
+        // dd($item);
+        if($item&&$itemImage){
            return redirect('/');
         }
         return redirect()->back()->with('error','Add Item Failed!');
@@ -60,9 +60,12 @@ class ItemController extends Controller
 
     //Update & Delete (UD)
     public function view_update(){
-        
+        //ini gw bingung ntar dashboard admin ama user apakah beda? sementara gw buat view yang kayak item detail ??????????
+        //sementara view belom buat ye msh logic ae (g bisa testing g ad view)
     }
-    public function update_item(){
+
+    //Belum test bcs gak ada view
+    public function update_item(Request $req,$id){
 
     }
     public function delete_item(){
