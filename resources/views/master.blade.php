@@ -22,6 +22,14 @@
         .detail-img{
             width:30rem;
         }
+        .ctg-img{
+            width:17rem;
+            height:15rem;
+            object-fit: cover;
+        }
+        .dark-overlay{
+            background-color: rgba(0, 0, 0, 0.500) !important;
+        }
     </style>
   </head>
   <body>
