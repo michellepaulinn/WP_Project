@@ -12,7 +12,7 @@
                 <div class="card p-4 mx-4">
                     @foreach ($images as $image)
                         @if ($image->item_id === $item->id)
-                            <img class="card-img-top" src="{{$item->item_image}}" alt="Card image cap">                       
+                            <img class="card-img-top" src="{{$image->item_image}}" alt="Card image cap">                       
                         @endif   
                     @endforeach
                     <div class="card-block">
