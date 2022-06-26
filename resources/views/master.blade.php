@@ -58,14 +58,20 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg-end">
                         @guest   
-                        <li><a class="dropdown-item" href="/login">Log in</a></li>
+                            <li>
+                                <div class="dropdown-header">
+                                    Guest
+                                </div>
+                                <a class="dropdown-item" href="/login">Log in</a>
+                            </li>
                         @endguest
                         @auth
-                        <li><div class="dropdown-header">
-                            {{ Auth::user()->name }}
-                        </div></li>
-                        <li>
-                            <a class="dropdown-item" href="/logout">Log out</a></li>
+                            <li>
+                                <div class="dropdown-header">
+                                    {{ Auth::user()->name }}
+                                </div>
+                            </li>
+                            <a class="dropdown-item" href="/logout">Log out</a>
                         @endauth
                     </ul>
                 </div>
