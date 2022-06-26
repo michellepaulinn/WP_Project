@@ -71,9 +71,7 @@
                                     {{ Auth::user()->name }}
                                 </div>
                             </li>
-                            <li>
-                                <a class="dropdown-item" href="/logout">Log out</a>
-                            </li>
+                            <a class="dropdown-item" href="/logout">Log out</a>
                         @endauth
                     </ul>
                 </div>
