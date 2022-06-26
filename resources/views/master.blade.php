@@ -57,11 +57,15 @@
                         <span class="material-icons">person</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg-end">
+                        @guest   
                         <li><a class="dropdown-item" href="/login">Log in</a></li>
+                        @endguest
+                        @auth
                         <li><div class="dropdown-header">
                             {{ Auth::user()->name }}
                         </div></li>
                         <li><a class="dropdown-item" href="#">Log out</a></li>
+                        @endauth
                     </ul>
                 </div>
             </div>
