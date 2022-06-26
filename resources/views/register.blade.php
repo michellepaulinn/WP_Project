@@ -25,23 +25,23 @@
                 @csrf
                 <h2 class="fw-bold mb-4 text-uppercase text-center">Register</h2>
                 <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="account_name">Name</label>
-                    <input type="name" name="account_name" id="account_name" class="form-control form px-5-control-lg">
+                    <label class="form-label" for="name_field">Name</label>
+                    <input type="name" name="name" id="name_field" class="form-control form px-5-control-lg">
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="account_email">Email</label>
-                    <input type="email" name="account_email" id="account_email" class="form-control form px-5-control-lg">
+                    <label class="form-label" for="email_field">Email</label>
+                    <input type="email" name="email" id="email_field" class="form-control form px-5-control-lg">
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="account_password">Password</label>
-                    <input type="password" name="account_password" id="account_password" class="form-control form px-5-control-lg">
+                    <label class="form-label" for="password_field">Password</label>
+                    <input type="password" name="password" id="password_field" class="form-control form px-5-control-lg">
                 </div>
 
                 <div class="form-outline form-white mb-4">
                     <label class="form-label" for="cPassword_field">Confirm Password</label>
-                    <input type="password" name="account_cPassword" id="cPassword_field" class="form-control form px-5-control-lg">
+                    <input type="password" name="cPassword" id="cPassword_field" class="form-control form px-5-control-lg">
                 </div>
 
                 <div class="d-flex flex-row justify-content-between align-items-end mt-5">

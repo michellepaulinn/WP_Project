@@ -33,34 +33,6 @@
     </style>
   </head>
   <body>
-    {{-- <header class="py-3 mb-4 border-bottom navbar-light">
-        <div class="my-2 d-flex flex-row align-items-center justify-content-between">    
-            <a href="/" class="col-md-2 mb-2 mb-md-0 text-decoration-none">
-                <h3>Thrift Store</h3>
-            </a>
-            
-            <form action="" class="d-flex flex-row" method="GET">
-                <input type="search" class="form-control pr-5 pl-3 mr-1" placeholder="Celana, Baju, ..." aria-label="Search" name="keyword">
-                <button class="btn bg-primary" type="submit">Search</button>
-            </form>
-            
-            <div class="col-md-2 text-end">
-                <a href="/login" class="btn btn-outline-primary me-2" role="button">Login</a>
-                <a href="/signup" class="btn btn-primary" role="button">Sign-up</a>
-            </div>
-        </div>
-
-        <div>
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-            </ul>
-        </div>
-    </header> --}}
-
     <header>
         <div class="nav justify-content-between d-flex gap-4 p-4 w-100">
             <a class="logo nav-item navbar-brand" href="/">
@@ -87,7 +59,7 @@
                     <ul class="dropdown-menu dropdown-menu-lg-end">
                         <li><a class="dropdown-item" href="/login">Log in</a></li>
                         <li><div class="dropdown-header">
-                            User
+                            {{ Auth::user()->name }}
                         </div></li>
                         <li><a class="dropdown-item" href="#">Log out</a></li>
                     </ul>

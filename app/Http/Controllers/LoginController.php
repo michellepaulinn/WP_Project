@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Account;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -19,10 +19,12 @@ class LoginController extends Controller{
             'password' => 'required'
         ]);
 
-        $user = Account::where('account_email', '=', $request->email)->first();
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
 
-        if($user && Hash::check($request->password, $user['account_password'])){
-            $request->session()->regenerate(); 
+        if(Auth::attempt($credentials)){
             return redirect('/');
         }
         
@@ -31,7 +33,6 @@ class LoginController extends Controller{
 
     public function logout(Request $request){
         Auth::logout();
-        $request->session()->invalidate();
         return redirect('/');
     }
 }
