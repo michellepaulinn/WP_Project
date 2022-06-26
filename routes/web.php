@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
@@ -27,13 +28,15 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'form']);
 Route::post('/register-process', [RegisterController::class, 'register']);
 
-    //Frontend
-    Route::get('manage-item', [ItemController::class, 'view_update']);
-    Route::get('add-item', [ItemController::class, 'view_create']);
-    //Backend
-    Route::post('create-item',[ItemController::class,'create_item']);
+//Frontend
+Route::get('manage-item', [ItemController::class, 'view_update']);
+Route::get('add-item', [ItemController::class, 'view_create']);
+//Backend
+Route::post('create-item', [ItemController::class, 'create_item']);
 
 Route::get('/cart', [CartController::class, 'viewCart']);
 
 Route::get('/search', [ItemController::class, 'searchItem']);
-Route::get('/item/{id}',[ItemController::class, 'itemDetail']);
+Route::get('/item/{id}', [ItemController::class, 'itemDetail']);
+
+Route::get('/checkout', [CheckoutController::class, 'checkout']);

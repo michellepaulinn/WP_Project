@@ -3,6 +3,7 @@
 @section('title', 'Cart')
 
 @section('content')
+@dd($crt)
     <div class="manage-games">
         <div class="game-list container d-flex flex-column align-items-center gap-2 mt-4">
             <h1>Your Cart</h1>
@@ -57,7 +58,7 @@
                 </div>
             </div>
 
-            <a href="#" class="btn btn-outline-dark d-flex align-self-end mt-3 me-3">CHECKOUT</a>
+            <a href="/checkout" class="btn btn-outline-dark d-flex align-self-end mt-3 me-3">CHECKOUT</a>
         </div>
     </div>
 @endsection

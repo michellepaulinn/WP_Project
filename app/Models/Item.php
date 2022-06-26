@@ -33,4 +33,9 @@ class Item extends Model
     {
         return $this->belongsTo(TransactionDetail::class);
     }
+
+    public function cart()
+    {
+        return $this->belongsTo(Cart::class);
+    }
 }
