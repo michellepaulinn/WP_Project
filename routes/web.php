@@ -7,6 +7,8 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +32,10 @@ Route::post('/register-process', [RegisterController::class, 'register']);
     //Frontend
     Route::get('manage-item', [ItemController::class, 'view_update']);
     Route::get('add-item', [ItemController::class, 'view_create']);
+    Route::get('transaction/{id}', [TransactionController::class, 'view_transaction']);
     //Backend
     Route::post('create-item',[ItemController::class,'create_item']);
+    Route::post('confirm-payment-process',[ItemController::class, 'confirm']);
 
 Route::get('/cart', [CartController::class, 'viewCart']);
 

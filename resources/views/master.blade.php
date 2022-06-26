@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>@yield('title')</title> 
     <style>
-        .logo{
+        .title{
             font-family: 'Times New Roman', Times, serif;
             color: black;
         }
@@ -35,7 +35,7 @@
   <body>
     <header>
         <div class="nav justify-content-between d-flex gap-4 p-4 w-100">
-            <a class="logo nav-item navbar-brand" href="/">
+            <a class="title nav-item navbar-brand" href="/">
                 <h3 class="">Thrift Store</h3>
             </a>
             <div class="search nav-item flex-grow-1 px-4 mx-4">
@@ -64,7 +64,8 @@
                         <li><div class="dropdown-header">
                             {{ Auth::user()->name }}
                         </div></li>
-                        <li><a class="dropdown-item" href="#">Log out</a></li>
+                        <li>
+                            <a class="dropdown-item" href="/logout">Log out</a></li>
                         @endauth
                     </ul>
                 </div>
@@ -88,7 +89,7 @@
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
             <div class="col-md-4 d-flex align-items-center gap-4">
                 <div>
-                    <a href="/" class="logo">
+                    <a href="/" class="title">
                         <h3>Thrift Store  </h3>
                     </a>
                 </div>
