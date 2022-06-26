@@ -13,7 +13,7 @@ class TransactionDetail extends Model
     public function transaction(){
         return $this->belongsTo(Transaction::class);
     }
-    public function items(){{
-        return $this->hasMany(Item::class);
+    public function item(){{
+        return $this->hasOne(Item::class);
     }}
 }

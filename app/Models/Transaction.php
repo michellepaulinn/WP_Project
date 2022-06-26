@@ -9,7 +9,7 @@ class Transaction extends Model
 {
     use HasFactory;
     public function transactionDetails(){
-        return $this->hasmany(TransactionDetail::class);
+        return $this->hasMany(TransactionDetail::class);
     }
     public function account(){
         return $this->belongsTo(Account::class);

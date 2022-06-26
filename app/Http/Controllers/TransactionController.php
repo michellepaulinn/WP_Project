@@ -9,6 +9,7 @@ class TransactionController extends Controller
 {
     public function view_transaction($id){
         $transaction = Transaction::find($id);
-        return view('transaction-detail', ['transaction'=>$transaction]);
+        $dets = $transaction->transactionDetails();
+        return view('transaction-detail', ['transaction'=>$transaction,'dets'=>$dets]);
     }
 }

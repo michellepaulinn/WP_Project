@@ -21,7 +21,7 @@ class Item extends Model
 
     public function cartDetail()
     {
-        return $this->belongsTo(cartDetail::class);
+        return $this->belongsToMany(cartDetail::class);
     }
 
     public function itemImages()
@@ -29,8 +29,8 @@ class Item extends Model
         return $this->hasMany(itemImage::class);
     }
 
-    public function transactionDetails()
+    public function transactionDetail()
     {
-        return $this->belongsTo(TransactionDetail::class);
+        return $this->belongsTo(TransactionDetail::class, 'item_id');
     }
 }
