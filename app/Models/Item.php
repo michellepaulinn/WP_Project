@@ -19,14 +19,14 @@ class Item extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function cartDetail()
+    public function cartDetails()
     {
-        return $this->belongsToMany(cartDetail::class);
+        return $this->hasMany(cartDetail::class);
     }
 
-    public function itemImages()
+    public function itemImage()
     {
-        return $this->hasMany(itemImage::class);
+        return $this->hasOne(itemImage::class);
     }
 
     public function transactionDetail()

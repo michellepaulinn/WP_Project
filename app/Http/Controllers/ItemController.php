@@ -19,9 +19,13 @@ class ItemController extends Controller
     }
 
     public function itemDetail($id){
+        // $item = Item::find($id);
+        // $itemImage = $item->itemImage();
+        // return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage,"name" ]);
+    
         $item = Item::find($id);
-        $itemImage = $item->itemImages()->first();
-        return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage,"name" ]);
+        $itemImage = ItemImage::where('item_id', $id)->first();
+        return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage]);
     }
 
     //CRUD 

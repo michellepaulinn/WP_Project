@@ -3,6 +3,16 @@
 @section('title', ''.$item->name.'')
 
 @section('content')
+    @if (session('alert'))
+    <div class="alert alert-success">
+        {{ session('alert') }}
+    </div>
+    @elseif (session('warning'))
+    <div class="alert alert-warning">
+        {{ session('warning') }}
+    </div>
+    @endif
+
     <div class="container d-flex justify-content-center" style="width:80%;">
         <div class="item-image flex-shrink">
             <img class="detail-img" src="{{$itemImage->item_image}}" alt="slide">
@@ -12,10 +22,15 @@
             <div class="item-price">{{$item->item_price}}</div>
             <div class="description">{{$item->description}}</div>
 
-            <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
-        </div>
-        
+            <form action="/cart" method="post">
+                @csrf
+                <input type="hidden" name="item_id" value="{{$item->id}}">
+                <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
+            </form> 
+        </div> 
     </div>
 
 @endsection
+
+  
 
