@@ -38,6 +38,7 @@ class CheckoutController extends Controller
         Transaction::insert([
             'user_id' => Auth::user()->id,
             'transaction_date' => Carbon::now()->format('Y-m-d'),
+            'created_at' => Carbon::now()->format('Y-m-d'),
             'transaction_status_id' => 1,
         ]);
 
@@ -66,8 +67,9 @@ class CheckoutController extends Controller
         ]);
 
         //ambil data dari form
+        $extfile = $request->payment_proof->getClientOriginalExtension();
         $file = $request->file('payment_proof');
-        $fileName = time();
+        $fileName = time() . "." . $extfile;
         $file->move('images/payment', $fileName);
 
         //ambil data dari transaction
