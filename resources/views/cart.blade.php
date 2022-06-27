@@ -69,8 +69,7 @@
                     </div>
                 </div>
             </div>
-
-            <a href="#" class="btn btn-outline-dark d-flex align-self-end mt-3 me-3">CHECKOUT</a>
+            <a href="/checkout" class="btn btn-outline-dark d-flex align-self-end mt-3 me-3">CHECKOUT</a>
         </div>
     </div>
 @endsection

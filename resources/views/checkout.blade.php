@@ -1,64 +1,48 @@
 @extends('master')
 
-@section('title', 'Checkout')
+@section('title','Transaction')
 
 @section('content')
-    <div class="manage-games">
-        <div class="game-list container d-flex flex-column align-items-center gap-2 mt-4">
-            <h1>Checkout</h1>
+    <div class="container">
+        <h6>Checkout Detail</h6>
+        {{-- @dd($transaction) --}}
+        <div class="content d-flex justify-content-between">
 
-            <div class="card w-100 shadow bg-white rounded">
-                <div class="row g-0 m-2">
-                    <div class="col">
-                        <img src="" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="84" width="180">
+            <div class="content-left d-flex flex-column rounded m-4 p-4 shadow-sm">
+                {{-- {{dd($transaction)}} --}}
+                {{-- {{dd($transaction->transactionDetails())}} --}}
+                <p>{{$transaction->transaction_date}}</p>
+                @foreach ($cartDetail as $det)
+                <div class="card d-flex flex-column">
+                    <div>
+                        {{$det->item->item_name}}
                     </div>
-                    
-                    <div class="col-md-7">
-                        <div class="card-body">
-                            <h5 class="card-title">Nama Clothes</h5>
-
-                            <p class="card-text">
-                                <small class="text-muted text-light">Description</small>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 d-flex flex-column align-items-end justify-content-center">
-                        <div class="row">
-                            <p class="card-text">Rp 139.000</p>
-                        </div>
-
-                        <div class="row manage-btn g-1">
-                            <div class="col">
-                                <a href="#" class="btn btn-danger">REMOVE</a>
-                            </div>
-                        </div>
+                    <div>
+                        {{$det->item->item_price}}
                     </div>
                 </div>
+                @endforeach
             </div>
-            
-            <div class="card w-100 shadow bg-white rounded">
-                <div class="row g-0 m-2">
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <h5 class="card-title">Total</h5>
-
-                            <p class="card-text">
-                                <small class="text-muted text-light">2 clothe(s)</small>
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 d-flex flex-column align-items-end justify-content-center">
-                        <div class="row">
-                            <p class="card-text">Rp 999.999</p>
-                        </div>
-                    </div>
+            <div class="content-right">
+                <div class="user-profile">
+                    {{$transaction->user->name}}
                 </div>
-            </div>
+                <div>
+                    <h2>{{$total}}</h2>
+                </div>
+                <div>
+                    <p>{{$transaction->transactionStatus->status_name}}</p>
+                    <div>
+                        {{-- Buat gambar bukti transaksi yang diupload cust --}}
+                    </div>
+                    <form action="/confirm-payment/{{$transaction->id}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="status" value=3>
+                        <button type="submit" class="btn btn-primary">Proceed Payment</button>
+                    </form>
+                </div>
 
-            <a href="#" class="btn btn-outline-dark d-flex align-self-end mt-3 me-3">CHECKOUT</a>
+            </div>
         </div>
     </div>
 @endsection
-
