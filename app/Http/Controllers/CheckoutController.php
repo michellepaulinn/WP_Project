@@ -30,7 +30,7 @@ class CheckoutController extends Controller
             $itemStatus->save();
         }
 
-        //cek ulang
+        //cek ulang 
         $cartDetailUpdatedStatus = CartDetail::where('cart_id', $cart->id)->get();
 
         //create transaction status, terus masukin data datanya
@@ -44,5 +44,11 @@ class CheckoutController extends Controller
 
 
         return view('checkout', ['cart' => $cart, 'cartDetail' => $cartDetailUpdatedStatus, 'transaction' => $transaction, 'total' => $total]);
+    }
+
+    public function upload_payment()
+    {
+
+        return view('upload-payment');
     }
 }

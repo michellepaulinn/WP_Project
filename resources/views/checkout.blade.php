@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title','Transaction')
+@section('title','Checkout')
 
 @section('content')
     <div class="container">
@@ -35,11 +35,7 @@
                     <div>
                         {{-- Buat gambar bukti transaksi yang diupload cust --}}
                     </div>
-                    <form action="/confirm-payment/{{$transaction->id}}" method="POST">
-                        @csrf
-                        <input type="hidden" name="status" value=3>
-                        <button type="submit" class="btn btn-primary">Proceed Payment</button>
-                    </form>
+                    <button type="submit" class="btn btn-primary"><a href="/proceed-payment/{{$transaction->id}}" class="text-decoration-none text-white">Proceed Payment</a></button>
                 </div>
 
             </div>
