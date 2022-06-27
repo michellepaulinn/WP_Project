@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             ItemSeeder::class,
             ItemImageSeeder::class,
             CartSeeder::class,
+            TransactionStatusSeeder::class,
             TransactionSeeder::class,
             TransactionDetailSeeder::class
         ]);
