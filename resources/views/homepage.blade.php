@@ -4,7 +4,11 @@
 
 @section ('content')
     <div class="container">
-
+        @if (session('successPayment'))
+            <div class="alert alert-success">
+                {{ session('successPayment') }}
+            </div>
+        @endif
         <div class="newArrival">
             <div class="text-center m-4"><h2 class="title">New Arrivals</h2></div>
             <div class="d-flex container m-2 justify-content-between">
