@@ -51,14 +51,9 @@ Route::middleware([VerifyLogin::class])->group(function () {
     Route::post('/confirm-payment/{id}', [TransactionController::class, 'confirm_payment']);
 
     Route::get('/cart', [CartController::class, 'viewCart']);
-<<<<<<< HEAD
-    Route::get('/checkout', [CheckoutController::class, 'viewCheckout']);
-});
-=======
     Route::post('/cart', [CartController::class, 'addToCart']);
     Route::post('/delete', [CartController::class, 'removeCart']);
+
+    //for checkout
+    Route::get('/checkout', [CheckoutController::class, 'viewCheckout']);
 });
-
-
-
->>>>>>> main
