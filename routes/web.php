@@ -40,13 +40,14 @@ Route::middleware([VerifyLogout::class])->group(function() {
 Route::middleware([VerifyLogin::class])->group(function() {
     // kalau sudah login, dapat akses route ke:
     Route::get('/logout', [LoginController::class, 'logout']);
+    //Middleware admin 
     //Frontend
     Route::get('manage-item', [ItemController::class, 'view_update']);
     Route::get('add-item', [ItemController::class, 'view_create']);
     Route::get('transaction/{id}', [TransactionController::class, 'view_transaction']);
     //Backend
     Route::post('create-item',[ItemController::class,'create_item']);
-    Route::post('confirm-payment/{id}',[TransactionController::class, 'confirm']);
+    Route::post('/confirm-payment/{id}',[TransactionController::class, 'confirm_payment']);
 
     Route::get('/cart', [CartController::class, 'viewCart']);
     Route::post('/cart', [CartController::class, 'addToCart']);
