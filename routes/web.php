@@ -56,5 +56,7 @@ Route::middleware([VerifyLogin::class])->group(function () {
 
     //for checkout
     Route::get('/checkout', [CheckoutController::class, 'viewCheckout']);
-    Route::get('/proceed-payment/{id}', [CheckoutController::class, 'upload_payment']);
+    Route::post('/proceed-payment/{id}', [CheckoutController::class, 'upload_payment']);
+    //for process upload
+    Route::post('/proceed-payment/{id}/upload', [CheckoutController::class, 'process_upload_payment']);
 });

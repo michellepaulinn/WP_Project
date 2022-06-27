@@ -35,7 +35,11 @@
                     <div>
                         {{-- Buat gambar bukti transaksi yang diupload cust --}}
                     </div>
-                    <button type="submit" class="btn btn-primary"><a href="/proceed-payment/{{$transaction->id}}" class="text-decoration-none text-white">Proceed Payment</a></button>
+                    <form action="/proceed-payment/{{$transaction->id}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="total" value={{ $total }}>
+                        <button type="submit" class="btn btn-primary">Proceed Payment</button>
+                    </form>
                 </div>
 
             </div>
