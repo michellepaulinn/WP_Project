@@ -46,7 +46,7 @@ Route::middleware([VerifyLogin::class])->group(function() {
     Route::get('transaction/{id}', [TransactionController::class, 'view_transaction']);
     //Backend
     Route::post('create-item',[ItemController::class,'create_item']);
-    Route::post('confirm-payment-process',[ItemController::class, 'confirm']);
+    Route::post('/confirm-payment/{id}',[TransactionController::class, 'confirm_payment']);
 
     Route::get('/cart', [CartController::class, 'viewCart']);
 });
