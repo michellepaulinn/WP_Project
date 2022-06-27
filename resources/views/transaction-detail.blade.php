@@ -30,13 +30,13 @@
                     <h2>{{$total}}</h2>
                 </div>
                 <div>
-                    <p>{{$transaction->transaction_status}}</p>
+                    <p>{{$transaction->transactionStatus->status_name}}</p>
                     <div>
                         {{-- Buat gambar bukti transaksi yang diupload cust --}}
                     </div>
                     <form action="/confirm-payment/{{$transaction->id}}" method="POST">
                         @csrf
-                        <input type="hidden" name="status" value='c'>
+                        <input type="hidden" name="status" value=3>
                         <button type="submit" class="btn btn-primary">Confirm Payment</button>
                     </form>
                 </div>

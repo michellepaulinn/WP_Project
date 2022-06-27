@@ -18,7 +18,7 @@ class TransactionSeeder extends Seeder
             [
                 'user_id' => 2,
                 'transaction_date' => '2022-06-20',
-                'transaction_status' => 'p'
+                'transaction_status_id' => 2,
             ],
         ]);
     }
