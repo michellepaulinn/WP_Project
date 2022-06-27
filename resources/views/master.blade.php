@@ -71,6 +71,11 @@
                                     {{ Auth::user()->name }}
                                 </div>
                             </li>
+                            @if(Auth::user()->role_id=='1')
+                                <li>
+                                    <a class="dropdown-item" href="/add-item">Add Item</a>
+                                </li>
+                            @endif
                             <a class="dropdown-item" href="/logout">Log out</a>
                         @endauth
                     </ul>

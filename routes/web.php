@@ -40,6 +40,7 @@ Route::middleware([VerifyLogout::class])->group(function() {
 Route::middleware([VerifyLogin::class])->group(function() {
     // kalau sudah login, dapat akses route ke:
     Route::get('/logout', [LoginController::class, 'logout']);
+    //Middleware admin 
     //Frontend
     Route::get('manage-item', [ItemController::class, 'view_update']);
     Route::get('add-item', [ItemController::class, 'view_create']);
