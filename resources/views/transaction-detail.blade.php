@@ -13,11 +13,21 @@
                 <p>{{$transaction->transaction_date}}</p>
                 @foreach ($dets as $det)
                 <div class="card d-flex flex-column">
-                    <div>
-                        {{$det->item->item_name}}
-                    </div>
-                    <div>
-                        {{$det->item->item_price}}
+                    <div class="card w-100 shadow bg-white rounded">
+                        <div class="row g-0 m-2">
+                            <div class="col card-img-left" style="width:5rem;">
+                                <img src="{{ $det->item->itemImage->item_image }}" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="84" width="180">
+                            </div>
+                            
+                            <div class="col-md-7">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$det->item->item_name}}</h5>
+                                    <p class="card-text">
+                                        <small class="text-muted text-light">{{ $det->item->item_price }}</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @endforeach

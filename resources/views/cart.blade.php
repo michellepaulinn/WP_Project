@@ -57,7 +57,7 @@
                             <h5 class="card-title">Total</h5>
 
                             <p class="card-text">
-                                <small class="text-muted text-light">{{ count($cartDetails); }} clothe(s)</small>
+                                <small class="text-muted text-light">{{ count($cartDetails)git }} clothe(s)</small>
                             </p>
                         </div>
                     </div>
