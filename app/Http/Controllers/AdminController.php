@@ -17,7 +17,7 @@ class AdminController extends Controller
     }
 
     public function create_item(Request $req)
-    {{{  }}
+    {
         $req->validate([
             'item_name' => 'required',
             'item_price' => 'required',
