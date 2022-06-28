@@ -11,7 +11,7 @@
                 <div class="card w-100 shadow bg-white rounded">
                     <div class="row g-0 m-2">
                         <div class="col">
-                            <img src="{{ $cartDetail->item->itemImage->item_image }}" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="84" width="180">
+                            <img src="/photos/{{ $cartDetail->item->itemImage->item_image }}" class=" img-fluid rounded-start" alt="GAMBAR FASHION" height="50" width="90">
                         </div>
                         
                         <div class="col-md-7">
@@ -26,14 +26,8 @@
 
                         <div class="col-md-3 d-flex flex-column align-items-end justify-content-center">
                             <div class="row">
-                                <p class="card-text">{{$cartDetail->item->item_price}}</p>
+                                <p class="card-text">IDR {{number_format($cartDetail->item->item_price)}}</p>
                             </div>
-
-                            {{-- <form action="{{route('delete')}}" method="post">
-                                @csrf
-                                <input type="hidden" name="id" value="{{$item->id}}">
-                                <input type="submit" value="Delete" class="btn">
-                            </form>     --}}
 
                             <div class="row manage-btn g-1">
                                 <div class="col">
@@ -55,16 +49,14 @@
                     <div class="col-md-9">
                         <div class="card-body">
                             <h5 class="card-title">Total</h5>
-
                             <p class="card-text">
-                                <small class="text-muted text-light">{{ count($cartDetails)git }} clothe(s)</small>
+                                <small class="text-muted text-light">{{ count($cartDetails) }} clothe(s)</small>
                             </p>
                         </div>
                     </div>
-
                     <div class="col-md-3 d-flex flex-column align-items-end justify-content-center">
                         <div class="row">
-                            <p class="card-text">{{$totalPrice}}</p>
+                            <p class="card-text">IDR {{number_format($totalPrice)}}</p>
                         </div>
                     </div>
                 </div>

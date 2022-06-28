@@ -18,6 +18,9 @@ class CreateTransactionsTable extends Migration
             $table->foreignId('user_id');
             $table->foreignId('transaction_status_id');
             $table->date('transaction_date');
+            $table->string('recipient_name')->nullable();
+            $table->string('shipping_address')->nullable();
+            $table->string('phone_number')->nullable();
             $table->string('proof')->nullable();
             $table->timestamps();
         });

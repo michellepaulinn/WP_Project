@@ -30,6 +30,13 @@
         .dark-overlay{
             background-color: rgba(0, 0, 0, 0.500) !important;
         }
+        .category-card:hover{
+            color :  #333;
+            opacity: 0.4;
+        }
+        .ctg-item{
+            margin-top: -45px;
+        }
     </style>
   </head>
   <body>
@@ -48,9 +55,22 @@
             </div>
             <div class="d-flex nav-item gap-3">
                 <div class="cart px-4 align-baseline">
-                    <a href="/cart">
-                        <span class="material-icons">shopping_cart</span>
-                    </a>
+                    @guest   
+                        <a href="/cart">
+                            <span class="material-icons">shopping_cart</span>
+                        </a>
+                    @endguest
+                    @auth
+                        @if(Auth::user()->role_id=='1')
+                            <a href="/admin/view_create_item">
+                                <span class="material-icons">add_circle</span>
+                            </a>
+                        @else
+                            <a href="/cart">
+                                <span class="material-icons">shopping_cart</span>
+                            </a>
+                        @endif
+                    @endauth
                 </div>
                 <div class="profile px-4 dropdown">
                     <a href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">
@@ -71,23 +91,11 @@
                                     {{ Auth::user()->name }}
                                 </div>
                             </li>
-                            @if(Auth::user()->role_id=='1')
-                                <li>
-                                    <a class="dropdown-item" href="/add-item">Add Item</a>
-                                </li>
-                            @endif
                             <a class="dropdown-item" href="/logout">Log out</a>
                         @endauth
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="ctg d-flex justify-content-center w-100">
-            {{-- @foreach($category as $ctg)
-                <div class="ctg-item mx-2">
-                    <a href="/category/{{$ctg->id}}">{{$ctg->category_name}}</a>
-                </div>
-            @endforeach --}}
         </div>
     </header>
     <div class="container mt-4">
@@ -101,7 +109,7 @@
             <div class="col-md-4 d-flex align-items-center gap-4">
                 <div>
                     <a href="/" class="title">
-                        <h3>Thrift Store  </h3>
+                        <h3>Thrift Store</h3>
                     </a>
                 </div>
                 <div><span class="text-muted mx-4">  &copy Thrift Company </span></div>

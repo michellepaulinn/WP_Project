@@ -1,31 +1,31 @@
 @extends('master')
 
-@section('title', 'Add Item')
+@section('title', 'Update Item')
 
 @section('auth-form')
     <div class="container-fluid py-3 d-flex justify-content-center h-100 col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card card-body bg-dark text-white p-5" style="border-radius: 1rem;">
-            <form action="/admin/create_item" method="post" class="mb-md-5 px-5" enctype="multipart/form-data">
+            <form action="/admin/update_item/{{ $item->id }}" method="post" class="mb-md-5 px-5" enctype="multipart/form-data">
                     @if(session()->has('error'))
                         <div class="alert alert-danger">
                             {{ session()->get('error') }}
                         </div>
                     @endif
                 @csrf
-                <h2 class="fw-bold mb-5 text-uppercase text-center">Add Item</h2>
+                <h2 class="fw-bold mb-5 text-uppercase text-center">Update Item</h2>
                 <div class="form-outline form-white mb-4">
                     
                     <label class="form-label" for="item_name">Item Name</label>
-                    <input type="name" name="item_name" id="item_name" class="form-control form px-5-control-lg" required>
+                    <input required value="{{ $item->item_name }}"  type="name" name="item_name" id="item_name" class="form-control form px-5-control-lg" required>
                 </div>
 
                 <div class="form-outline form-white mb-4">
                     <label class="form-label" for="item_price">Item Price</label>
-                    <input type="number" name="item_price" id="item_price" class="form-control form px-5-control-lg" required>
+                    <input required value="{{ $item->item_price }}" type="number" name="item_price" id="item_price" class="form-control form px-5-control-lg" required>
                 </div>
                 <div class="form-outline form-white mb-4">
                     <label class="form-label" for="description">Description</label>
-                    <input type="text" name="description" id="description" class="form-control form px-5-control-lg" required>
+                <input required value="{{ $item->description }}" type="text" name="description" id="description" class="form-control form px-5-control-lg" required>
                 </div>
                 
                 <label for="category">Item Category</label>

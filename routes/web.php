@@ -28,6 +28,7 @@ use App\Http\Controllers\TransactionController;
 Route::get('/', [PageController::class, 'homepage']);
 Route::get('/search', [ItemController::class, 'searchItem']);
 Route::get('/item/{id}', [ItemController::class, 'itemDetail']);
+Route::get('/category/{id}', [ItemController::class, 'getCategory']);
 
 
 Route::middleware([VerifyLogout::class])->group(function () {
@@ -42,12 +43,18 @@ Route::middleware([VerifyLogin::class])->group(function () {
     // kalau sudah login, dapat akses route ke:
     Route::get('/logout', [LoginController::class, 'logout']);
     //Middleware admin 
+    //Item
     //Frontend
-    Route::get('manage-item', [ItemController::class, 'view_update']);
-    Route::get('add-item', [ItemController::class, 'view_create']);
-    Route::get('transaction/{id}', [TransactionController::class, 'view_transaction']);
+    Route::get('/admin/view_create_item', [AdminController::class, 'view_create']);
+    Route::get('/admin/view_update_item/{id}', [AdminController::class, 'view_update']);
+    Route::get('/admin/delete_item/{id}', [AdminController::class, 'delete_item']);
+
+    //buat view admin untuk 
+    Route::get('/transaction/{id}', [TransactionController::class, 'view_transaction']);
+
     //Backend
-    Route::post('create-item', [ItemController::class, 'create_item']);
+    Route::post('/admin/create_item', [AdminController::class, 'create_item']);
+    Route::post('/admin/update_item/{id}', [AdminController::class, 'update_item']);
     Route::post('/confirm-payment/{id}', [TransactionController::class, 'confirm_payment']);
 
     Route::get('/cart', [CartController::class, 'viewCart']);
@@ -56,7 +63,10 @@ Route::middleware([VerifyLogin::class])->group(function () {
 
     //for checkout
     Route::get('/checkout', [CheckoutController::class, 'viewCheckout']);
-    Route::post('/proceed-payment/{id}', [CheckoutController::class, 'upload_payment']);
+    Route::post('/checkout/{id}', [CheckoutController::class, 'upload_payment']);
+    Route::post('/checkout/proceed-payment/{id}', [CheckoutController::class, 'upload_payment']);
     //for process upload
-    Route::post('/proceed-payment/{id}/upload', [CheckoutController::class, 'process_upload_payment']);
+    Route::post('/checkout/proceed-payment/{id}/upload', [CheckoutController::class, 'process_upload_payment']);
+
+
 });

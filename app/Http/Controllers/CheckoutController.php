@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\Item;
 use App\Models\CartDetail;
+use App\Models\ItemImage;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
@@ -17,9 +18,12 @@ class CheckoutController extends Controller
     //
     public function viewCheckout()
     {
+        $itemImages = ItemImage::all();
+
         // ambil cart dan id serta detailnya
         $cart = Cart::where('user_id', Auth::user()->id)->first();
         $cartDetail = CartDetail::where('cart_id', $cart->id)->get();
+
 
         // kita ubah status tiap item jadi false
         $total = 0;
@@ -35,26 +39,52 @@ class CheckoutController extends Controller
         $cartDetailUpdatedStatus = CartDetail::where('cart_id', $cart->id)->get();
 
         //create transaction status, terus masukin data datanya
-        Transaction::insert([
-            'user_id' => Auth::user()->id,
-            'transaction_date' => Carbon::now()->format('Y-m-d'),
-            'created_at' => Carbon::now()->format('Y-m-d'),
-            'transaction_status_id' => 1,
-        ]);
+        $txcheck = Transaction::where('user_id', Auth::user()->id)->first();
+
+        if ($txcheck) {
+            echo "<script>console.log('already exist')</script>";
+        } else {
+            Transaction::insert([
+                'user_id' => Auth::user()->id,
+                'transaction_date' => Carbon::now()->format('Y-m-d'),
+                'created_at' => Carbon::now()->format('Y-m-d'),
+                'transaction_status_id' => 1,
+            ]);
+        }
+
+
 
         //ambil transaksi yg dibuat
         $transaction = Transaction::where('user_id', Auth::user()->id)->first();
 
+        //masukin data ke transaction detail
+        $checktxdetail = TransactionDetail::where('transaction_id', $transaction->id)->get();
+        if ($checktxdetail) {
+        } else {
+            foreach ($cartDetailUpdatedStatus as $cdUpdate) {
+                TransactionDetail::insert([
+                    'transaction_id' => $transaction->id,
+                    'item_id' => $cd->item->id,
+                ]);
+            }
+        }
 
-        return view('checkout', ['cart' => $cart, 'cartDetail' => $cartDetailUpdatedStatus, 'transaction' => $transaction, 'total' => $total]);
+        // return dd($transaction->id);
+        return view('checkout', ['cart' => $cart, 'cartDetail' => $cartDetailUpdatedStatus, 'transaction' => $transaction, 'total' => $total, 'images' => $itemImages]);
     }
 
     public function upload_payment(Request $request, $id)
     {
         // cari id transactionnya
-        $transaction = Transaction::find($id);
+        $transaction = Transaction::findOrFail($id);
         //show total payment that harus dibayar
         $tot = $request->total;
+
+        //masukin data ke transaction
+        $transaction->recipient_name = $request->nama;
+        $transaction->phone_number = $request->phone;
+        $transaction->shipping_address = $request->address;
+        $transaction->save();
 
         return view('upload-payment', ['total' => $tot, 'trx' => $transaction]);
     }

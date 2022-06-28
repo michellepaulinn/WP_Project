@@ -36,7 +36,6 @@ class CartController extends Controller
         $cartDetail->item_id = $request->item_id;
         $cartDetail->save();
 
-
         return redirect()->back()->with(['alert' => 'Success add Item to cart']);
     }
 

@@ -4,43 +4,58 @@
 
 @section('content')
     <div class="container">
-        <h6>Checkout Detail</h6>
-        {{-- @dd($transaction) --}}
-        <div class="content d-flex justify-content-between">
-
-            <div class="content-left d-flex flex-column rounded m-4 p-4 shadow-sm">
-                {{-- {{dd($transaction)}} --}}
-                {{-- {{dd($transaction->transactionDetails())}} --}}
-                <p>{{$transaction->transaction_date}}</p>
+        <h5>Checkout Detail</h5>
+        <!-- {{-- @dd($transaction) --}} -->
+        <div class="content d-flex justify-content-between row">
+        <!-- Cards Product -->
+            <div class="content-left d-flex flex-column rounded shadow-sm col-sm">
+                <!-- {{-- {{dd($transaction)}} --}} -->
+                <!-- {{-- {{dd($transaction->transactionDetails())}} --}} -->
+                <h6>Items:</h6>
                 @foreach ($cartDetail as $det)
-                <div class="card d-flex flex-column">
-                    <div>
-                        {{$det->item->item_name}}
+                <div class="card">
+                    <div class="m-2 d-flex flex-row">
+                        <div class="">
+                            <img src="/photos/{{ $det->item->itemImage->item_image }}" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="50" width="90">
+                        </div>
+                        <div class="">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $det->item->item_name}}</h5>
+                                <p class="card-text">
+                                    <small class="text-muted text-light">IDR {{ number_format($det->item->item_price) }}</small>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        {{$det->item->item_price}}
-                    </div>
-                </div>
+                </div>    
                 @endforeach
             </div>
-            <div class="content-right">
-                <div class="user-profile">
-                    {{$transaction->user->name}}
-                </div>
-                <div>
-                    <h2>{{$total}}</h2>
-                </div>
-                <div>
-                    <p>{{$transaction->transactionStatus->status_name}}</p>
-                    <div>
-                        {{-- Buat gambar bukti transaksi yang diupload cust --}}
+        <!-- Form Pengiriman -->
+            <div class="content-right col-sm">
+                <h6>Shipping Detail</h6>
+                <!-- Form -->
+                <div class="form">        
+                    <form action="checkout/proceed-payment/{{$transaction->id}}" method="POST">
+                    @csrf
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="nama" autofocus id="nama" placeholder="Receipient Name">
+                        <label for="nama">Recepient Name</label>
                     </div>
-                    <form action="/proceed-payment/{{$transaction->id}}" method="POST">
-                        @csrf
-                        <input type="hidden" name="total" value={{ $total }}>
-                        <button type="submit" class="btn btn-primary">Proceed Payment</button>
-                    </form>
-                </div>
+                    <div class="form-floating">
+                        <textarea name="address" class="form-control" autofocus id="address" cols="30" rows="5" placeholder="Address"></textarea>
+                        <label for="address">Shipping Address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" autofocus name="phone" id="phone" placeholder="Phone Number">
+                        <label for="phone">Phone Number</label>
+                    </div>
+                    <div class="my-3">
+                        <h6>Total:</h6>
+                        <h2>IDR {{number_format($total )}}</h2>
+                    </div>
+                    <input type="hidden" name="total" value="{{ $total }}">
+                    <button type="submit" class="btn btn-primary">Make Order</button>
+                </form>
 
             </div>
         </div>

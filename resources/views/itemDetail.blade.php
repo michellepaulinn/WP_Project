@@ -4,29 +4,35 @@
 
 @section('content')
     @if (session('alert'))
-    <div class="alert alert-success">
-        {{ session('alert') }}
-    </div>
-    @elseif (session('warning'))
-    <div class="alert alert-warning">
-        {{ session('warning') }}
-    </div>
-    @endif
-
-    <div class="container d-flex justify-content-center" style="width:80%;">
-        <div class="item-image flex-shrink">
-            <img class="detail-img" src="{{$itemImage->item_image}}" alt="slide">
+        <div class="alert alert-success">
+            {{ session('alert') }}
         </div>
-        <div class="details align-self-center flex-grow-1 mx-4">
+    @elseif (session('warning'))
+        <div class="alert alert-warning">
+            {{ session('warning') }}
+        </div>
+    @endif
+    
+    <div class="row container d-flex justify-content-center" style="width:80%;">
+        <div class="col item-image flex-shrink">
+            <img class="detail-img" src="/photos/{{$itemImage->item_image}}" alt="slide" width="400" height="400">
+        </div>
+        <div class="col details align-self-center flex-grow-1 mx-4">
             <div class="item-name fs-3">{{$item->item_name}}</div>
-            <div class="item-price">{{$item->item_price}}</div>
+            <div class="item-price">IDR {{number_format($item->item_price)}}</div>
             <div class="description">{{$item->description}}</div>
-
-            <form action="/cart" method="post">
-                @csrf
-                <input type="hidden" name="item_id" value="{{$item->id}}">
-                <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
-            </form> 
+            @if(Auth::check() and Auth::user()->role_id == '1')
+                <!-- Update -->
+                    <a href="/admin/view_update_item/{{ $item->id }}" class="btn btn-dark">Update</a>
+                <!-- Delete -->
+                    <a href="/admin/delete_item/{{ $item->id }}" class="btn btn-danger">Delete</a>
+            @else
+                <form action="/cart" method="post">
+                    @csrf
+                    <input type="hidden" name="item_id" value="{{ $item->id }}">
+                    <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
+                </form> 
+            @endif
         </div> 
     </div>
 

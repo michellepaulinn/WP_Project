@@ -17,7 +17,7 @@
                 <div class="card border-0">
                     @foreach ($images as $image)
                         @if ($image->item_id === $item->id)
-                            <img class="card-img-top " src="{{$image->item_image}}" alt="Card image cap">                       
+                            <img class="card-img-top" src="/photos/{{$image->item_image}}" alt="Card image cap" width="272" height="240" style="max-width: 272px; max-height: 240;">                       
                         @endif   
                     @endforeach
                     <div class="card-body text-center">
@@ -33,16 +33,15 @@
         <div class="ShopCategory text-center d-flex">
             
             @foreach ($categories as $category)
-                <div class="col-md-3 mx-2 ">
-                    <div class="d-flex card shadow-sm rounded text-white ">
-                        <a href="/?category={{ $category->id }}" >
-                        <img style="" class="card-img ctg-img" src="{{$category->category_thumbnail}}" alt="{{ $category->category_name }}">
+                <div class="col-md-3 mx-2 category">
+                    <div class="d-flex card shadow-sm rounded text-white category-card">
+                        <a href="/category/{{ $category->id }}">
+                            <img class="card-img ctg-img" src="{{$category->category_thumbnail}}" alt="{{ $category->category_name }}">
                             <div class="card-img-overlay m-auto dark-overlay d-flex justify-content-center align-items-center" >
                                 <h4 class="text-white text-center cart-title" >{{ $category->category_name }}</h4>
                             </div>
                         </a>
                     </div>
-                {{-- </a> --}}
                 </div>
             @endforeach
         </div>
