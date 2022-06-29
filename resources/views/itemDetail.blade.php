@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', ''.$item->name.'')
+@section('title', ''.$item->item_name.'')
 
 @section('content')
     @if (session('alert'))
