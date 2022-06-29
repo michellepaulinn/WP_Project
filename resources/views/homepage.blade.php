@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="text-center m-4"><h2 class="title">Shop By Category</h2></div>
-        <div class="ShopCategory text-center d-flex">
+        <div class="ShopCategory text-center d-flex justify-content-center">
             
             @foreach ($categories as $category)
                 <div class="col-md-3 mx-2 category">

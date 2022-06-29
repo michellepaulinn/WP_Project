@@ -53,7 +53,7 @@
                     </button>
                 </form>
             </div>
-            <div class="d-flex nav-item gap-3">
+            <div class="d-flex nav-item gap-3>
                 <div class="cart px-4 align-baseline">
                     @guest   
                         <a href="/cart">
