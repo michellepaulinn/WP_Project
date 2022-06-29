@@ -34,7 +34,11 @@
                     Item Category
                     <option hidden>Category</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                        @if ($item->category->id === $category->id)
+                            <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
+                        @else
+                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                        @endif
                     @endforeach
                 </select>
                 <div class="form-group mt-4">

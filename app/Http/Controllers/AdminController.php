@@ -50,7 +50,7 @@ class AdminController extends Controller
     public function view_update($id)
     {
         $categories = Category::all();
-        $item = Item::find($id)->first();
+        $item = Item::find($id);
         return view('update_item', ["categories"=> $categories,"item"=>$item]);
     }
 
