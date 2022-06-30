@@ -17,7 +17,7 @@ class ItemImageSeeder extends Seeder
         ItemImage::insert([
             [
                 'item_id'=>1,
-                'item_image' => 'gema.jpg'
+                'item_image' => 'Crop-Cardigan.jpg'
             ],
             [
                 'item_id'=>2,
@@ -25,15 +25,35 @@ class ItemImageSeeder extends Seeder
             ],
             [
                 'item_id'=>3,
-                'item_image' => 'cardigan.jpg'
+                'item_image' => 'Korean-Outer.jpg'
             ],
             [
                 'item_id'=>4,
-                'item_image' => 'gema.jpg'
+                'item_image' => 'Cream-Cardigan.jpg'
             ],
             [
                 'item_id'=>5,
-                'item_image' => 'gema.jpg'
+                'item_image' => 'Black-Blouse.jpg'
+            ],
+            [
+                'item_id'=>6,
+                'item_image' => 'Bhumi-Top.jpg'
+            ],
+            [
+                'item_id'=>7,
+                'item_image' => 'Vneck-Shirt.jpg'
+            ],
+            [
+                'item_id'=>8,
+                'item_image' => 'Mamba-Tshirt.jpg'
+            ],
+            [
+                'item_id'=>9,
+                'item_image' => 'Cream-Trousers.jpg'
+            ],
+            [
+                'item_id'=>10,
+                'item_image' => 'Black-Skirt.jpg'
             ],
             
         ]);
