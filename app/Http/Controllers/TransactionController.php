@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -23,4 +24,17 @@ class TransactionController extends Controller
         $transaction->save();
         return redirect()->back();
     }
+
+    public function cust_orders(){
+        $transaction = auth()->user()->transactions;
+        // dd($transaction);
+        // $dets = $transaction->transactionDetails;
+        return view('cust_orders', ['transaction' => $transaction]);
+    }
+
+    public function admin_orders(){
+        $transaction = Transaction::all();
+        return view('admin-transaction', ['transaction' => $transaction]);
+    }
+
 }

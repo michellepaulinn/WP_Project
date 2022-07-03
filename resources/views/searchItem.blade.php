@@ -15,7 +15,7 @@ Search Result
               @endforeach
                 <div class="card-body text-center">
                   <h6 class="card-title">{{ $item->item_name }}</h6>
-                    <p class="card-text">{{ $item->item_price }}</p>
+                    <p class="card-text">{{ number_format($item->item_price) }}</p>
                 </div>
             </div>
           </a>

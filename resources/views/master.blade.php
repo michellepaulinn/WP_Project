@@ -91,6 +91,11 @@
                                     {{ Auth::user()->name }}
                                 </div>
                             </li>
+                            @if(auth()->user()->role_id == 1)
+                            <a class="dropdown-item" href="/admin/orders">Orders</a>
+                            @else
+                            <a class="dropdown-item" href="/orders">My Orders</a>
+                            @endif
                             <a class="dropdown-item" href="/logout">Log out</a>
                         @endauth
                     </ul>

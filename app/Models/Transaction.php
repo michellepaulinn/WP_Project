@@ -17,4 +17,8 @@ class Transaction extends Model
     public function transactionStatus(){
         return $this->belongsTo(TransactionStatus::class);
     }
+
+    // public function getTotalItem(){
+    //     return $this->hasMany(TransactionDetail::class)->where
+    // }
 }
