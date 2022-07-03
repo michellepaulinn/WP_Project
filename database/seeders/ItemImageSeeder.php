@@ -55,6 +55,30 @@ class ItemImageSeeder extends Seeder
                 'item_id'=>10,
                 'item_image' => 'Black-Skirt.jpg'
             ],
+            [
+                'item_id'=>11,
+                'item_image' => 'Red-Skirt.jpg'
+            ],
+            [
+                'item_id'=>12,
+                'item_image' => 'Plaid-Pants.jpg'
+            ],
+            [
+                'item_id'=>13,
+                'item_image' => 'Knit-Headband.png'
+            ],
+            [
+                'item_id'=>14,
+                'item_image' => 'Dior-Sunglasses.jpg'
+            ],
+            [
+                'item_id'=>15,
+                'item_image' => 'Pearl-Necklace.jpg'
+            ],
+            [
+                'item_id'=>16,
+                'item_image' => 'Pearl-Set.jpg'
+            ],
             
         ]);
     }
