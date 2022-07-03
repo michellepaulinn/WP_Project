@@ -43,25 +43,28 @@
                 </div>
             @endforeach
             
-            
-            <div class="card w-100 shadow bg-white rounded">
-                <div class="row g-0 m-2">
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <h5 class="card-title">Total</h5>
-                            <p class="card-text">
-                                <small class="text-muted text-light">{{ count($cartDetails) }} clothe(s)</small>
-                            </p>
+            @if (!$cartDetails->isEmpty())
+                <div class="card w-100 shadow bg-white rounded">
+                    <div class="row g-0 m-2">
+                        <div class="col-md-9">
+                            <div class="card-body">
+                                <h5 class="card-title">Total</h5>
+                                <p class="card-text">
+                                    <small class="text-muted text-light">{{ count($cartDetails) }} clothe(s)</small>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3 d-flex flex-column align-items-end justify-content-center">
-                        <div class="row">
-                            <p class="card-text">IDR {{number_format($totalPrice)}}</p>
+                        <div class="col-md-3 d-flex flex-column align-items-end justify-content-center">
+                            <div class="row">
+                                <p class="card-text">IDR {{number_format($totalPrice)}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <a href="/checkout" class="btn btn-outline-dark d-flex align-self-end mt-3 me-3">CHECKOUT</a>
+                <a href="/checkout" class="btn btn-outline-dark d-flex align-self-end mt-3 me-3">CHECKOUT</a>
+            @else
+                <h3 class="card w-100 shadow bg-white rounded text-center p-4">There is no Item in Cart</h3>
+            @endif
         </div>
     </div>
 @endsection
