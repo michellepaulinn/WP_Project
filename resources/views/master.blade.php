@@ -37,6 +37,19 @@
         .ctg-item{
             margin-top: -45px;
         }
+        .register{
+            background-color: #ede6db;
+        }
+        .login{
+            background-color: #ede6db;
+        }
+        .login>form{
+            color:#396854;
+        }
+        .register>form{
+            color:#396854;
+        }
+        
     </style>
   </head>
   <body>
@@ -109,12 +122,12 @@
 
     @yield('auth-form')
     
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center gap-4">
+    <div class="mt-5" style="background-color:#ede6db;">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 border-top" style="background-color: #ede6db">
+            <div class="col-md-4 d-flex align-items-center gap-4" style="background-color: #ede6db">
                 <div>
                     <a href="/" class="title">
-                        <h3>Thrift Store</h3>
+                        <h3 style="color: #396854">Thrift Store</h3>
                     </a>
                 </div>
                 <div><span class="text-muted mx-4">  &copy Thrift Company </span></div>

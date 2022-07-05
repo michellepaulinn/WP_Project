@@ -10,14 +10,14 @@
             </div>
         @endif
         <div class="newArrival">
-            <div class="text-center m-4"><h2 class="title">New Arrivals</h2></div>
+            <div class="text-center m-4"><h2 class="title" style="color: #396854;font-weight:500">New Arrivals</h2></div>
             <div class="d-flex container m-2 justify-content-between">
                @foreach ($items as $item)
                 <a href="/item/{{ $item->id }}" class="mx-4">
-                <div class="card border-0">
+                <div class="card border-1" style="color: #396854;background-color:#ede6db;">
                     @foreach ($images as $image)
                         @if ($image->item_id === $item->id)
-                            <img class="card-img-top" src="/photos/{{$image->item_image}}" alt="Card image cap" width="272" height="240" style="max-width: 272px; max-height: 240;">                       
+                            <img class="card-img-top p-3" src="/photos/{{$image->item_image}}" alt="Card image cap" width="272" height="240" style="max-width: 272px; max-height: 240;">                       
                         @endif   
                     @endforeach
                     <div class="card-body text-center">
@@ -29,7 +29,7 @@
                @endforeach
             </div>
         </div>
-        <div class="text-center m-4"><h2 class="title">Shop By Category</h2></div>
+        <div class="text-center m-4"><h2 class="title" style="color: #396854;font-weight:500;">Shop By Category</h2></div>
         <div class="ShopCategory text-center d-flex justify-content-center">
             
             @foreach ($categories as $category)

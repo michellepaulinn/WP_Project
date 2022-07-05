@@ -4,7 +4,7 @@
 
 @section('auth-form')
     <div class="container-fluid py-3 d-flex justify-content-center h-100 col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card card-body bg-dark text-white p-5" style="border-radius: 1rem;">
+        <div class="register card card-body text-white p-5" style="border-radius: 0.5rem;">
             <form action="/register-process" method="post" class="mb-md-5 px-5">
                 @if(session()->has('error'))
                     <div class="alert alert-danger">
@@ -25,31 +25,31 @@
                 @csrf
                 <h2 class="fw-bold mb-4 text-uppercase text-center">Register</h2>
                 <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="name_field">Name</label>
+                    <label class="form-label" for="name_field" style="font-weight: 500">Name</label>
                     <input type="name" name="name" id="name_field" class="form-control form px-5-control-lg">
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="email_field">Email</label>
+                    <label class="form-label" for="email_field" style="font-weight: 500">Email</label>
                     <input type="email" name="email" id="email_field" class="form-control form px-5-control-lg">
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="password_field">Password</label>
+                    <label class="form-label" for="password_field" style="font-weight: 500">Password</label>
                     <input type="password" name="password" id="password_field" class="form-control form px-5-control-lg">
                 </div>
 
                 <div class="form-outline form-white mb-4">
-                    <label class="form-label" for="cPassword_field">Confirm Password</label>
+                    <label class="form-label" for="cPassword_field" style="font-weight: 500">Confirm Password</label>
                     <input type="password" name="cPassword" id="cPassword_field" class="form-control form px-5-control-lg">
                 </div>
 
                 <div class="d-flex flex-row justify-content-between align-items-end mt-5">
                     <p class="mb-0">
-                        <a href="/login" class="text-white fw-bold">Already registered? Login here!</a>
+                        <a href="/login" class="fw-bold" style="color: #396854">Already registered? Login here!</a>
                     </p>
 
-                    <button class="btn btn-outline-light btn-lg px-3" type="submit">REGISTER</button>
+                    <button class="btn btn-outline-light btn-lg px-3" type="submit" style="color: #396854">REGISTER</button>
                 </div>
             </form>
         </div>
