@@ -4,7 +4,7 @@
 
 @section('auth-form')
     <div class="container-fluid py-5 d-flex justify-content-center h-100 col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="login card card-body text-white p-5" style="border-radius: 1rem;">
+        <div class="login card card-body text-white p-5" style="border-radius: 0.5rem;">
             <form action="/login-process" method="post" class="mb-md-5 px-5">
                 <h2 class="fw-bold mb-2 text-uppercase text-center">Login</h2>
                 @if(session()->has('error'))
