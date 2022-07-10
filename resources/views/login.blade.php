@@ -13,25 +13,36 @@
                         </div>
                 @endif
 
-                @if (count($errors) > 0)
-                    <div class = "alert alert-danger">
-                        <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                        </ul>
-                    </div>
-                @endif
-
                 @csrf
                 <div class="form-outline form-white mb-4">
                     <label class="form-label" for="email_field" style="font-weight: 500">Email</label>
-                    <input type="email" name="email" id="email_field" class="form-control form-control-lg">
+                    <input type="email" name="email" id="email_field" class="form-control form-control-lg" value="{{ old('email') }}">
+
+                    @error('email')
+                        <div class="text-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
 
                 <div class="form-outline form-white mb-4">
                     <label class="form-label" for="password_field" style="font-weight: 500">Password</label>
                     <input type="password" name="password" id="password_field" class="form-control form-control-lg">
+
+                    @error('password')
+                        <div class="text-danger">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="form-outline form-white mb-4">
+                    <input type="checkbox" name="remember_me" id="remember_me" class="form-check-input"
+                        @if (old('remember_me'))
+                            checked
+                        @endif
+                    >
+                    <label for="remember_me"> Remember Me</label>
                 </div>
 
                 <div class="text-center">

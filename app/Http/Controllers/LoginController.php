@@ -24,7 +24,12 @@ class LoginController extends Controller{
             'password' => $request['password']
         ];
 
-        if(Auth::attempt($credentials)){
+        $rememberMe = $request->has('remember_me') ? true : false;
+        
+        Auth::setRememberDuration(1440);
+        if(Auth::attempt($credentials, $rememberMe)){
+            $request->session()->regenerate();
+
             return redirect('/');
         }
         
@@ -32,7 +37,11 @@ class LoginController extends Controller{
     }
 
     public function logout(Request $request){
-        Auth::logout();
+        if(Auth::check()){
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            Auth::logout();
+        }
         return redirect('/');
     }
 }
