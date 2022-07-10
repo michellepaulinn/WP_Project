@@ -33,7 +33,7 @@
             <hr>
             <p>After you make payment to the bank account, please upload the payment proof.</p>
             <p>Upload proof of transaction below:</p>
-            <form action="/proceed-payment/{{ $trx->id }}/upload" method="post" enctype="multipart/form-data">
+            <form action="uploads/{{ $trx->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="file" name="payment_proof" id="payment_proof" class="form-control">
                 <button type="submit" class="btn btn-primary mt-4">Upload</button>

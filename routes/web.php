@@ -65,8 +65,8 @@ Route::middleware([VerifyLogin::class])->group(function () {
     Route::post('/checkout/{id}', [CheckoutController::class, 'upload_payment']);
     Route::post('/checkout/proceed-payment/{id}', [CheckoutController::class, 'upload_payment']);
     //for process upload
-    Route::post('/checkout/proceed-payment/{id}/upload', [CheckoutController::class, 'process_upload_payment']);
+    Route::post('/checkout/proceed-payment/uploads/{id}', [CheckoutController::class, 'process_upload_payment']);
 
-    Route::get('/orders',[TransactionController::class, 'cust_orders']);
-    Route::get('/admin/orders',[TransactionController::class, 'admin_orders']);
+    Route::get('/orders', [TransactionController::class, 'cust_orders']);
+    Route::get('/admin/orders', [TransactionController::class, 'admin_orders']);
 });
