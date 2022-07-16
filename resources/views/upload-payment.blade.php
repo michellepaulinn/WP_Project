@@ -13,7 +13,7 @@
                     <input type="" class="form-control" id="floatingInput" placeholder="name@example.com" value="{{ $trx->recipient_name }}" readonly>
                     <label for="floatingInput">Name</label>
                 </div>
-                <div class="form-floating">
+                <div class="form-floating mb-1">
                     <input type="text" class="form-control" id="floatingPhone" placeholder="Address" value="{{  $trx->phone_number }}" readonly >
                     <label for="floatingPassword">Phone</label>
                 </div>

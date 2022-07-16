@@ -59,8 +59,17 @@ class CheckoutController extends Controller
 
         //masukin data ke transaction detail
         $checktxdetail = TransactionDetail::where('transaction_id', $transaction->id)->get();
+        // if ($checktxdetail) {
+        // } else {
+        //     foreach ($cartDetailUpdatedStatus as $cdUpdate) {
+        //         TransactionDetail::insert([
+        //             'transaction_id' => $transaction->id,
+        //             'item_id' => $cd->item->id,
+        //         ]);
+        //     }
+        // }
+
         if ($checktxdetail) {
-        } else {
             foreach ($cartDetailUpdatedStatus as $cdUpdate) {
                 TransactionDetail::insert([
                     'transaction_id' => $transaction->id,
