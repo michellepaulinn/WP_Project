@@ -79,8 +79,33 @@ class CheckoutController extends Controller
         return view('checkout', ['cart' => $cart, 'cartDetail' => $cartDetailUpdatedStatus, 'transaction' => $transaction, 'total' => $total, 'images' => $itemImages]);
     }
 
-    public function checkOut(){
-        
+    public function checkOut(Request $req, $id){
+        //new transaction
+
+        $newTrans = Transaction::insert([
+            [
+                'user_id' => Auth::user()->id,
+                'transaction_status_id' =>1,
+                'transaction_date' => now(),
+                'recipient_name' => $req->nama,
+                'shipping_address' => $req->address,
+                'phone_number' => $req->phone
+            ]
+        ]);
+
+        //into trans det
+        $cart = Cart::where('id', $id)->first();
+        $cartDetails = $cart->cartDetails;
+        foreach($cartDetails as $cd){
+            $item = $cd->item();
+            TransactionDetail::insert([
+                [
+                    'transaction_id' => $newTrans->id,
+                    'item_id' => $item->id,
+                ]
+            ]);
+            $item->item_status = false;
+        }
     }
 
     public function upload_payment(Request $request, $id)
