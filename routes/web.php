@@ -49,6 +49,7 @@ Route::middleware([VerifyLogin::class])->group(function () {
     Route::get('/admin/view_create_item', [AdminController::class, 'view_create']);
     Route::get('/admin/view_update_item/{id}', [AdminController::class, 'view_update']);
     Route::get('/admin/delete_item/{id}', [AdminController::class, 'delete_item']);
+    Route::get('/admin/orders', [TransactionController::class, 'order_list']);
 
     //buat view admin untuk 
     Route::get('/transaction/{id}', [TransactionController::class, 'view_transaction']);
