@@ -33,24 +33,12 @@
         <!-- Form Pengiriman -->
             <div class="content-right col-sm">
                 <h6>Transaction Status</h6>
-                <!-- bikin validasi kalo belum bayar tampilin pesan belum dibayar, kalo udah tampilin fotonya -->
-                @if( $transaction->proof)
-                    <img src="/images/payment/{{$transaction->proof}}" alt="">
-                @endif
                 <p>{{$transaction->transactionStatus->status_name}}</p>
-                <!-- Form -->
-                <div class="form">        
-                    <form action="checkout/proceed-payment/{{$transaction->id}}" method="POST">
-                        @csrf
-                        <div class="my-3">
-                            <h6>Total:</h6>
-                            <h2>IDR {{number_format($total )}}</h2>
-                        </div>
-                        <input type="hidden" name="total" value=2>
-                        <button type="submit" class="btn btn-primary">Confirm Payment</button>
-                    </form>
-
-                </div>
+                @if ($transaction->transactionStatus->id == 1)
+                <form action="/proceed-payment/{{$transaction->id}}" method="post"></form>
+                    <input type="hidden" name="total" value="{{$total}}">
+                    <input type="submit" value="Bayar Sekarang">
+                @endif
             </div>
     </div>
 @endsection

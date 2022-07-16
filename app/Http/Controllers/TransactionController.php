@@ -27,22 +27,22 @@ class TransactionController extends Controller
     }
 
     public function order_list(){
-        //authenticate if admin
-        $trans = Transaction::all();
-        //if user
-        $trans = Transaction::where('user_id', Auth::user()->id);
-
+        if(Auth::user()->role->id == 1){
+            $trans = Transaction::all();
+        }
+        else{
+            $trans = Transaction::where('user_id', Auth::user()->id);
+        }
         return view('transaction-list', ['transaction' => $trans]);
     }
 
     public function order_detail($id){
         $transaction = Transaction::where('id', $id);
 
-        //if admin
-        return view('admin-transactionDetail', ['transaction' => $transaction]);
-
-        //if user
-        return view('transaction-detail', ['transaction' => $transaction]);
-
+        if(Auth::user()->role->id == 1){
+            return view('admin-transactionDetail', ['transaction' => $transaction]);
+        }else{
+            return view('transaction-detail', ['transaction' => $transaction]);
+        }
     }
 }

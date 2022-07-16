@@ -76,12 +76,13 @@ class CheckoutController extends Controller
         // }
 
         // return dd($transaction->id);
-        return view('checkout', ['cart' => $cart, 'cartDetail' => $cartDetailUpdatedStatus, 'transaction' => $transaction, 'total' => $total, 'images' => $itemImages]);
+        return view('checkout', ['cart' => $cart, 'cartDetail' => $cartDetailUpdatedStatus,  'total' => $total, 'images' => $itemImages]);
     }
 
-    public function checkOut(Request $req, $id){
+    public function checkOut(Request $req, $id)
+    {
         //new transaction
-
+        dd($req);
         $newTrans = Transaction::insert([
             [
                 'user_id' => Auth::user()->id,
@@ -96,8 +97,10 @@ class CheckoutController extends Controller
         //into trans det
         $cart = Cart::where('id', $id)->first();
         $cartDetails = $cart->cartDetails;
+        $total = 0;
         foreach($cartDetails as $cd){
             $item = $cd->item();
+            $total += $item->item_price;
             TransactionDetail::insert([
                 [
                     'transaction_id' => $newTrans->id,
@@ -106,6 +109,7 @@ class CheckoutController extends Controller
             ]);
             $item->item_status = false;
         }
+        return view('transaction-detail',['transaction' => $newTrans, 'total'=>$total]);
     }
 
     public function upload_payment(Request $request, $id)
@@ -116,10 +120,10 @@ class CheckoutController extends Controller
         $tot = $request->total;
 
         //masukin data ke transaction
-        $transaction->recipient_name = $request->nama;
-        $transaction->phone_number = $request->phone;
-        $transaction->shipping_address = $request->address;
-        $transaction->save();
+        // $transaction->recipient_name = $request->nama;
+        // $transaction->phone_number = $request->phone;
+        // $transaction->shipping_address = $request->address;
+        // $transaction->save();
 
         return view('upload-payment', ['total' => $tot, 'trx' => $transaction]);
     }

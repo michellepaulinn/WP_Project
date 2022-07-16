@@ -35,7 +35,7 @@
                 <h6>Shipping Detail</h6>
                 <!-- Form -->
                 <div class="form">        
-                    <form action="proceed-checkout/{{$transaction->id}}" method="POST">
+                    <form action="/proceed-checkout" method="POST">
                     @csrf
                     <div class="form-floating">
                         <input type="text" class="form-control" name="nama" autofocus id="nama" placeholder="Receipient Name">

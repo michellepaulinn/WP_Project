@@ -13,7 +13,7 @@ class PageController extends Controller
         // if(request('category')){
         //     $categories = Category::firstWhere('slug',request('category'));
         // }
-        $items = Item::latest()->paginate(8);
+        $items = Item::where('item_status',true)->latest()->paginate(8);
         $categories = Category::all();
         $images = ItemImage::all();
         return view('homepage', ['categories'=>$categories,'items'=>$items,'images'=>$images]);
