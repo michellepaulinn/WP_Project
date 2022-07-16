@@ -127,7 +127,7 @@
             </div>
         </div>
     </header>
-    <div class="isi" style="padding-bottom: 50px; padding-top:5px;">
+    <div class="isi" style="padding-bottom: 50px; padding-top:18px;">
         @yield('content')
     </div>
 
