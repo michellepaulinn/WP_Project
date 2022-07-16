@@ -15,6 +15,15 @@
             font-family: 'Times New Roman', Times, serif;
             color: black;
         }
+        .title1{
+            font-family: 'Times New Roman', Times, serif;
+
+         }
+        .title2{
+            font-family: 'Times New Roman', Times, serif;
+            font-weight: 500;
+         }
+         
         a{
             color: black;
             text-decoration: none;
