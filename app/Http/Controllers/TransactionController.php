@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -25,16 +26,23 @@ class TransactionController extends Controller
         return redirect()->back();
     }
 
-    public function cust_orders(){
-        $transaction = auth()->user()->transactions;
-        // dd($transaction);
-        // $dets = $transaction->transactionDetails;
-        return view('cust_orders', ['transaction' => $transaction]);
+    public function order_list(){
+        //authenticate if admin
+        $trans = Transaction::all();
+        //if user
+        $trans = Transaction::where('user_id', Auth::user()->id);
+
+        return view('transaction-list', ['transaction' => $trans]);
     }
 
-    public function admin_orders(){
-        $transaction = Transaction::all();
-        return view('admin-transaction', ['transaction' => $transaction]);
-    }
+    public function order_detail($id){
+        $transaction = Transaction::where('id', $id);
 
+        //if admin
+        return view('admin-transactionDetail', ['transaction' => $transaction]);
+
+        //if user
+        return view('transaction-detail', ['transaction' => $transaction]);
+
+    }
 }
