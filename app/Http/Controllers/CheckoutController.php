@@ -38,24 +38,24 @@ class CheckoutController extends Controller
         //create transaction status, terus masukin data datanya
         $txcheck = Transaction::where('user_id', Auth::user()->id)->first();
 
-        if ($txcheck) {
-            echo "<script>console.log('already exist')</script>";
-        } else {
-            Transaction::insert([
-                'user_id' => Auth::user()->id,
-                'transaction_date' => Carbon::now()->format('Y-m-d'),
-                'created_at' => Carbon::now()->format('Y-m-d'),
-                'transaction_status_id' => 1,
-            ]);
-        }
+        // if ($txcheck) {
+        //     echo "<script>console.log('already exist')</script>";
+        // } else {
+        //     Transaction::insert([
+        //         'user_id' => Auth::user()->id,
+        //         'transaction_date' => Carbon::now()->format('Y-m-d'),
+        //         'created_at' => Carbon::now()->format('Y-m-d'),
+        //         'transaction_status_id' => 1,
+        //     ]);
+        // }
 
 
 
         //ambil transaksi yg dibuat
-        $transaction = Transaction::where('user_id', Auth::user()->id)->first();
+        // $transaction = Transaction::where('user_id', Auth::user()->id)->first();
 
         //masukin data ke transaction detail
-        $checktxdetail = TransactionDetail::where('transaction_id', $transaction->id)->get();
+        // $checktxdetail = TransactionDetail::where('transaction_id', $transaction->id)->get();
         // if ($checktxdetail) {
         // } else {
         //     foreach ($cartDetailUpdatedStatus as $cdUpdate) {
@@ -66,14 +66,14 @@ class CheckoutController extends Controller
         //     }
         // }
 
-        if ($checktxdetail) {
-            foreach ($cartDetailUpdatedStatus as $cdUpdate) {
-                TransactionDetail::insert([
-                    'transaction_id' => $transaction->id,
-                    'item_id' => $cd->item->id,
-                ]);
-            }
-        }
+        // if ($checktxdetail) {
+        //     foreach ($cartDetailUpdatedStatus as $cdUpdate) {
+        //         TransactionDetail::insert([
+        //             'transaction_id' => $transaction->id,
+        //             'item_id' => $cd->item->id,
+        //         ]);
+        //     }
+        // }
 
         // return dd($transaction->id);
         return view('checkout', ['cart' => $cart, 'cartDetail' => $cartDetailUpdatedStatus, 'transaction' => $transaction, 'total' => $total, 'images' => $itemImages]);
