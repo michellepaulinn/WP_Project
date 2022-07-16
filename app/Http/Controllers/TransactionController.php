@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TransactionController extends Controller
 {
@@ -27,7 +28,7 @@ class TransactionController extends Controller
     }
 
     public function order_list(){
-        if(Auth::user()->role->id == 1){
+        if(Gate::inspect('isAdmin', Auth::user())->allowed()){
             $trans = Transaction::all();
         }
         else{
@@ -39,7 +40,7 @@ class TransactionController extends Controller
     public function order_detail($id){
         $transaction = Transaction::where('id', $id);
 
-        if(Auth::user()->role->id == 1){
+        if(Gate::inspect('isAdmin', Auth::user())->allowed()){
             return view('admin-transactionDetail', ['transaction' => $transaction]);
         }else{
             return view('transaction-detail', ['transaction' => $transaction]);
