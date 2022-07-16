@@ -3,7 +3,7 @@
 @section('title', 'Thrift Store')
 
 @section ('content')
-    <div class="container mb-3">
+    <div class="container" style="padding-bottom: 50px; padding-top:18px;">
         <div class="ShopCategory text-center d-flex">
             <div class="ctg d-flex justify-content-center w-100">
                 @foreach($categories as $ctg)

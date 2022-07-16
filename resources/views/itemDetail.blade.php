@@ -13,7 +13,7 @@
         </div>
     @endif
     
-    <div class="row container d-flex justify-content-center">
+    <div class="row container d-flex justify-content-center py-5" style="padding-left: 50px;">
         <div class="col item-image flex-shrink">
             <img class="detail-img" src="/photos/{{$itemImage->item_image}}" alt="slide" width="500px";height="600px";>
         </div>

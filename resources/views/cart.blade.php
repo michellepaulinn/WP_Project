@@ -3,7 +3,7 @@
 @section('title', 'Cart')
 
 @section('content')
-    <div class="manage-games">
+    <div class="manage-games" style="padding-bottom: 50px; padding-top:18px;">
         <div class="game-list container d-flex flex-column align-items-center gap-2 mt-4" style="color: #396854;">
             <h1>Your Cart</h1>
 
