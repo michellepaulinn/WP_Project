@@ -27,11 +27,15 @@
                 <!-- Delete -->
                     <a href="/admin/delete_item/{{ $item->id }}" class="btn btn-danger">Delete</a>
             @else
-                <form action="/cart" method="post">
-                    @csrf
-                    <input type="hidden" name="item_id" value="{{ $item->id }}">
-                    <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
-                </form> 
+                @if (!$item->item_status)
+                    <button disabled="disabled">SOLD OUT</button>
+                @else
+                    <form action="/cart" method="post">
+                        @csrf
+                        <input type="hidden" name="item_id" value="{{ $item->id }}">
+                        <button type="submit" class="btn btn-outline-dark">Add to Cart</button>
+                    </form> 
+                @endif
             @endif
         </div> 
     </div>

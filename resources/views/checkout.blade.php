@@ -53,6 +53,7 @@
                         <h6>Total:</h6>
                         <h2>IDR {{number_format($total )}}</h2>
                     </div>
+                    
                     <input type="hidden" name="total" value="{{ $total }}">
                     <button type="submit" class="btn btn-primary">Make Order</button>
                 </form>
