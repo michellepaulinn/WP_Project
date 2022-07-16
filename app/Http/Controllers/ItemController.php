@@ -24,10 +24,11 @@ class ItemController extends Controller
         // $item = Item::find($id);
         // $itemImage = $item->itemImage();
         // return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage,"name" ]);
-    
+       
         $item = Item::find($id);
         $itemImage = ItemImage::where('item_id', $id)->first();
-        return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage]);
+        $category = Category::where('id', $item->category_id)->first();
+        return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage,"category"=>$category]);
     }
 
     public function getCategory($id){

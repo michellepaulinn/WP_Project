@@ -11,9 +11,9 @@
         @endif
         <div class="newArrival">
             <div class="text-center m-4"><h2 class="title" style="color: #396854;font-weight:500">New Arrivals</h2></div>
-            <div class="d-flex container m-2 justify-content-between">
+            <div class="d-flex container m-2 justify-content-between flex-wrap">
                @foreach ($items as $item)
-                <a href="/item/{{ $item->id }}" class="mx-4">
+                <a href="/item/{{ $item->id }}" class="mx-2 my-4">
                 <div class="card border-1" style="color: #396854;background-color:#ede6db;">
                     @foreach ($images as $image)
                         @if ($image->item_id === $item->id)
