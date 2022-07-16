@@ -30,7 +30,7 @@
                 <form action="/cart" method="post" class="mx-4">
                     @csrf
                     <input type="hidden" name="item_id" value="{{ $item->id }}">
-                    <button type="submit" class="btn btn-outline-dark my-3" style="width: 440px;height:35px;">Add to Cart</button>
+                    <button type="submit" class="btn btn-outline-dark my-3" style="width: 440px;height:35px;color:#396854;">Add to Cart</button>
                 </form> 
             @endif
             <hr>

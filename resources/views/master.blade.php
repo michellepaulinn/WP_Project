@@ -58,20 +58,22 @@
         .register>form{
             color:#396854;
         }
-        
+        .isi{
+            background-color: #f7f6f2;
+        }
     </style>
   </head>
   <body>
     <header>
-        <div class="nav justify-content-between d-flex gap-4 p-4 w-100">
-            <a class="title nav-item navbar-brand" href="/">
+        <div class="nav justify-content-between d-flex gap-4 p-4 w-100" style="background-color: #ede6db;">
+            <a class="title nav-item navbar-brand" href="/" style="color:#396854;">
                 <h3 class="">Thrift Store</h3>
             </a>
             <div class="search nav-item flex-grow-1 px-4 mx-4">
                 <form action="/search" class="d-flex flex-row" method="GET">
                     <input type="search" class="form-control pr-5 pl-3 mr-1" placeholder="Celana, Baju, ..." aria-label="Search" name="keyword">
                     <button class="btn " type="submit">
-                        <span class="material-icons">search</span>
+                        <span class="material-icons" style="color:#396854;">search</span>
                     </button>
                 </form>
             </div>
@@ -79,24 +81,24 @@
                 <div class="cart px-4 align-baseline">
                     @guest   
                         <a href="/cart">
-                            <span class="material-icons">shopping_cart</span>
+                            <span class="material-icons" style="color:#396854;">shopping_cart</span>
                         </a>
                     @endguest
                     @auth
                         @if(Auth::user()->role_id=='1')
                             <a href="/admin/view_create_item">
-                                <span class="material-icons">add_circle</span>
+                                <span class="material-icons" style="color:#396854;">add_circle</span>
                             </a>
                         @else
                             <a href="/cart">
-                                <span class="material-icons">shopping_cart</span>
+                                <span class="material-icons" style="color:#396854;">shopping_cart</span>
                             </a>
                         @endif
                     @endauth
                 </div>
                 <div class="profile px-4 dropdown">
                     <a href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                        <span class="material-icons">person</span>
+                        <span class="material-icons" style="color:#396854;">person</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg-end">
                         @guest   
@@ -125,13 +127,13 @@
             </div>
         </div>
     </header>
-    <div class="container mt-4">
+    <div class="isi" style="padding-bottom: 50px; padding-top:5px;">
         @yield('content')
     </div>
 
     @yield('auth-form')
     
-    <div class="mt-5" style="background-color:#ede6db;">
+    <div class="" style="background-color:#ede6db;">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 border-top" style="background-color: #ede6db">
             <div class="col-md-4 d-flex align-items-center gap-4" style="background-color: #ede6db">
                 <div>
