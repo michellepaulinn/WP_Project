@@ -14,11 +14,12 @@ class CreateCartDetailsTable extends Migration
     public function up()
     {
         Schema::create('cart_details', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('cart_id');
             $table->foreignId('item_id');
             $table->timestamps();
 
-            $table->primary(['cart_id', 'item_id']);
+            // $table->primary(['cart_id', 'item_id','id']);
         });
     }
 

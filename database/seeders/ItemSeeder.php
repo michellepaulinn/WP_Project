@@ -22,21 +22,21 @@ class ItemSeeder extends Seeder
                     'item_name' => 'Crop Cardigan',
                     'item_price' => 50000,
                     'description' => ' contoh description ',
-                    'item_status' => true
+                    'item_status' => false
                 ],
                 [
                     'category_id' => 1,
                     'item_name' => 'Cardigan',
                     'item_price' => 20900,
                     'description' => ' contoh description ',
-                    'item_status' => true
+                    'item_status' => false
                 ],
                 [
                     'category_id' => 1,
                     'item_name' => 'Korean Outer',
                     'item_price' => 85000,
                     'description' => ' contoh description ',
-                    'item_status' => true
+                    'item_status' => false
                 ],
                 [
                     'category_id' => 1,

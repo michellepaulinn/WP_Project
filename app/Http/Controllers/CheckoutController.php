@@ -29,10 +29,7 @@ class CheckoutController extends Controller
         $total = 0;
 
         foreach ($cartDetail as $cd) {
-            $itemStatus = Item::where('id', $cd->item->id)->first();
-            $itemStatus->item_status = false;
             $total += $cd->item->item_price;
-            $itemStatus->save();
         }
 
         //cek ulang 
@@ -80,6 +77,10 @@ class CheckoutController extends Controller
 
         // return dd($transaction->id);
         return view('checkout', ['cart' => $cart, 'cartDetail' => $cartDetailUpdatedStatus, 'transaction' => $transaction, 'total' => $total, 'images' => $itemImages]);
+    }
+
+    public function checkOut(){
+        
     }
 
     public function upload_payment(Request $request, $id)

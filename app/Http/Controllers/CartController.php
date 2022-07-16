@@ -16,7 +16,14 @@ class CartController extends Controller
        $cartDetail = CartDetail::where('cart_id', $cart->id)->get();
 
        $totalPrice = 0;
-       foreach($cartDetail as $cd){ $totalPrice = $totalPrice + $cd->item->item_price; }
+       foreach($cartDetail as $cd){ 
+        if(! $cd->item->item_status){
+            $cd->delete();
+        }
+        else{
+            $totalPrice = $totalPrice + $cd->item->item_price; 
+        }
+        }
 
        return view('cart', ["cartDetails" => $cartDetail, "totalPrice" => $totalPrice]);
     }
