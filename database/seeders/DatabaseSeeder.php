@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ImageSlider;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,7 +23,8 @@ class DatabaseSeeder extends Seeder
             CartSeeder::class,
             TransactionStatusSeeder::class,
             TransactionSeeder::class,
-            TransactionDetailSeeder::class
+            TransactionDetailSeeder::class,
+            ImageSliderSeeder::class
         ]);
 
         //Seeder Post
