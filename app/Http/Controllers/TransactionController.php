@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Transaction;
+use App\Models\TransactionDetail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -32,18 +33,27 @@ class TransactionController extends Controller
             $trans = Transaction::all();
         }
         else{
-            $trans = Transaction::where('user_id', Auth::user()->id);
+            $trans = Auth::user()->transactions;
+            // dd($trans);
         }
+
+
         return view('transaction-list', ['transaction' => $trans]);
     }
 
     public function order_detail($id){
-        $transaction = Transaction::where('id', $id);
+        $transaction = Transaction::where('id', $id)->first();
+        // dd($transaction);
+        $dets = $transaction->transactionDetails;
+        $total = 0;
+        foreach($dets as $det){
+            $total += $det->item->item_price;
+        }
 
         if(Gate::inspect('isAdmin', Auth::user())->allowed()){
-            return view('admin-transactionDetail', ['transaction' => $transaction]);
+            return view('admin-transactionDetail', ['transaction' => $transaction, 'dets'=>$dets, 'total'=>$total]);
         }else{
-            return view('transaction-detail', ['transaction' => $transaction]);
+            return view('transaction-detail', ['transaction' => $transaction, 'dets'=>$dets, 'total'=>$total]);
         }
     }
 }

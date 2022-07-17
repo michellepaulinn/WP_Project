@@ -11,7 +11,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransactionController;
-use App\Models\Checkout;
 use Psy\VersionUpdater\Checker;
 
 /*
@@ -65,7 +64,7 @@ Route::middleware([VerifyLogin::class])->group(function () {
 
     //for checkout
     Route::get('/checkout', [CheckoutController::class, 'viewCheckout']);
-    Route::post('/proceed-checkout', [CheckoutController::class], 'checkOut');
+    Route::post('/proceed-checkout', [CheckoutController::class, 'checkOut']);
     Route::post('/proceed-payment/{id}', [CheckoutController::class, 'upload_payment']);
     // Route::post('/checkout/proceed-payment/{id}', [CheckoutController::class, 'upload_payment']);
     //for process upload

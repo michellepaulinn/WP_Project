@@ -6,11 +6,12 @@
     <div class="container m-auto">
         {{-- {{dd($transaction)}} --}}
         @foreach ($transaction as $tr)
+        <a href="/transaction/{{$tr->id}}">
             <div class="card m-3 p-2">
                 <div class="card-title fw-bold p-3">{{$tr->transactionStatus->status_name}}</div>
                 <div class="card-body d-flex row">
                     <div class="card-text">
-                        <p>Transaction id : {{ $tr->id }}</p>
+                        {{-- <p>Transaction id : {{ $tr->id }}</p> --}}
                         {{$tr->transactionDetails()->count()}} Items
                         <br>
                         @php($total = 0)
@@ -21,6 +22,8 @@
                     </div>
                 </div>
             </div>
+        </a>
+            
         @endforeach
     </div>    
 @endsection

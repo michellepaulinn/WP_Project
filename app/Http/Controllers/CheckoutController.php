@@ -79,27 +79,37 @@ class CheckoutController extends Controller
         return view('checkout', ['cart' => $cart, 'cartDetail' => $cartDetailUpdatedStatus,  'total' => $total, 'images' => $itemImages]);
     }
 
-    public function checkOut(Request $req, $id)
+    public function checkOut(Request $req)
     {
         //new transaction
-        dd($req);
-        $newTrans = Transaction::insert([
-            [
-                'user_id' => Auth::user()->id,
-                'transaction_status_id' =>1,
-                'transaction_date' => now(),
-                'recipient_name' => $req->nama,
-                'shipping_address' => $req->address,
-                'phone_number' => $req->phone
-            ]
-        ]);
+        // dd($req);
+        $newTrans = new Transaction();
+        $newTrans->user_id = Auth::user()->id;
+        $newTrans->transaction_status_id = 1;
+        $newTrans->transaction_date = now();
+        $newTrans->recipient_name = $req->nama;
+        $newTrans->shipping_address = $req->address;
+        $newTrans->phone_number = $req->phone;
+        $newTrans->save();
 
+        // Transaction::insert([
+        //     [
+        //         'user_id' => Auth::user()->id,
+        //         'transaction_status_id' =>1,
+        //         'transaction_date' => now(),
+        //         'recipient_name' => $req->nama,
+        //         'shipping_address' => $req->address,
+        //         'phone_number' => $req->phone
+        //     ]
+        // ])->get();
+
+        // dd($newTrans);
         //into trans det
-        $cart = Cart::where('id', $id)->first();
+        $cart = Cart::where('user_id', Auth::user()->id)->first();
         $cartDetails = $cart->cartDetails;
         $total = 0;
         foreach($cartDetails as $cd){
-            $item = $cd->item();
+            $item = $cd->item;
             $total += $item->item_price;
             TransactionDetail::insert([
                 [
@@ -108,8 +118,9 @@ class CheckoutController extends Controller
                 ]
             ]);
             $item->item_status = false;
+            $dets = $newTrans->transactionDetails;
         }
-        return view('transaction-detail',['transaction' => $newTrans, 'total'=>$total]);
+        return view('transaction-detail',['transaction' => $newTrans, 'dets'=>$dets, 'total'=>$total]);
     }
 
     public function upload_payment(Request $request, $id)

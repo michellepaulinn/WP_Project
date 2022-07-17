@@ -3,7 +3,7 @@
 @section('title','Upload Payment')
 
 @section('content')
-    <h3>Shipment Details</h3>
+    {{-- <h3>Shipment Details</h3> --}}
     <hr>
     <div class="container d-flex flex-col justify-content-end ">
         <div class="container">
@@ -33,7 +33,7 @@
             <hr>
             <p>After you make payment to the bank account, please upload the payment proof.</p>
             <p>Upload proof of transaction below:</p>
-            <form action="uploads/{{ $trx->id }}" method="POST" enctype="multipart/form-data">
+            <form action="/checkout/proceed-payment/uploads/{{ $trx->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="file" name="payment_proof" id="payment_proof" class="form-control">
                 <button type="submit" class="btn btn-primary mt-4">Upload</button>

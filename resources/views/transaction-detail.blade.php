@@ -32,12 +32,18 @@
             </div>
         <!-- Form Pengiriman -->
             <div class="content-right col-sm">
+                <div class="my-3">
+                    <h6>Total:</h6>
+                    <h2>IDR {{number_format($total )}}</h2>
+                </div>
                 <h6>Transaction Status</h6>
                 <p>{{$transaction->transactionStatus->status_name}}</p>
                 @if ($transaction->transactionStatus->id == 1)
-                <form action="/proceed-payment/{{$transaction->id}}" method="post"></form>
+                <form action="/proceed-payment/{{$transaction->id}}" method="post">
+                    @csrf
                     <input type="hidden" name="total" value="{{$total}}">
                     <input type="submit" value="Bayar Sekarang">
+                </form>
                 @endif
             </div>
     </div>
