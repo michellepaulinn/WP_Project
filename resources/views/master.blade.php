@@ -66,6 +66,28 @@
             height:35rem;
             object-fit: cover;
         }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+        height: 100px;
+        width: 100px;
+        outline: #6b4f4f;
+        background-size: 100%, 100%;
+        border-radius: 50%;
+        border: 5px solid #6b4f4f; 
+        background-image: none;
+        }
+
+        .carousel-control-next-icon:after {
+        content: '>';
+        font-size: 55px;
+        color: #6b4f4f;
+        }
+
+        .carousel-control-prev-icon:after {
+        content: '<';
+        font-size: 55px;
+        color: #6b4f4f;
+        }
     </style>
   </head>
   <body>
