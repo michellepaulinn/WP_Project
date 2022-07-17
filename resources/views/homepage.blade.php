@@ -3,7 +3,7 @@
 @section('title', 'Thrift Store')
 
 @section ('content')
-    <div class="container" style="padding-bottom: 50px; padding-top:18px;">
+    <div class="container" style="padding-bottom: 50px; padding-top:40px;">
         @if (session('successPayment'))
             <div class="alert alert-success">
                 {{ session('successPayment') }}
@@ -30,9 +30,9 @@
             </button>
         </div>
         @if(Auth::check() and Auth::user()->role_id == '1')
-        <div class="edit-carousel d-flex justify-content-center">
-            <a href="/admin/view_slider_add" class="btn btn-success">Add</a>
-            <a href="/admin/view_slider_remove" class="btn btn-danger">Delete</a>
+        <div class="edit-carousel d-flex justify-content-center mt-4 gap-4">
+            <a href="/admin/view_slider_add" class="btn btn-success px-5 py-2">Add</a>
+            <a href="/admin/view_slider_remove" class="btn btn-danger px-5 py-2">Delete</a>
         </div>
         @endif
         <div class="newArrival">
