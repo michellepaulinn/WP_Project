@@ -9,9 +9,11 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ImageSliderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransactionController;
 use App\Models\Checkout;
+use App\Models\ImageSlider;
 use Psy\VersionUpdater\Checker;
 
 /*
@@ -53,6 +55,12 @@ Route::middleware([VerifyLogin::class])->group(function () {
 
     //buat view admin untuk 
     Route::get('/transaction/{id}', [TransactionController::class, 'view_transaction']);
+
+    //admin edit carousel
+    Route::get('/admin/view_slider_remove', [ImageSliderController::class, 'viewSliderRemove']);
+    Route::post('/admin/slider_remove_process', [ImageSliderController::class, 'removeSlider']);
+    Route::get('/admin/view_slider_add', [ImageSliderController::class, 'viewSliderAdd']);
+    Route::post('/admin/slider_add_process', [ImageSliderController::class, 'addSlider']);
 
     //Backend
     Route::post('/admin/create_item', [AdminController::class, 'create_item']);

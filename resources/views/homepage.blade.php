@@ -9,6 +9,32 @@
                 {{ session('successPayment') }}
             </div>
         @endif
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @php $i = 0; $x = 'active' @endphp
+                @foreach ($sliders as $slider)
+                @php if($i == 0) $x = 'active'; else $x = '';  @endphp
+                    <div class="carousel-item carousel-img {{$x}}">
+                        <img src="{{ asset('/sliders/'.$slider->slider_image)}}" class="d-block w-100" alt="Image Slider {{$i}}">
+                    </div>
+                    @php $i++; @endphp
+                @endforeach
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        @if(Auth::check() and Auth::user()->role_id == '1')
+        <div class="edit-carousel d-flex justify-content-center">
+            <a href="/admin/view_slider_add" class="btn btn-success">Add</a>
+            <a href="/admin/view_slider_remove" class="btn btn-danger">Delete</a>
+        </div>
+        @endif
         <div class="newArrival">
             <div class="text-center m-4"><h2 class="title" style="color: #396854;font-weight:500">New Arrivals</h2></div>
             <div class="d-flex container m-2 justify-content-between flex-wrap">

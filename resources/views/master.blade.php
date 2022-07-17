@@ -61,6 +61,11 @@
         .isi{
             background-color: #f7f6f2;
         }
+        .carousel-img{
+            width:100%;
+            height:35rem;
+            object-fit: cover;
+        }
     </style>
   </head>
   <body>
@@ -77,7 +82,7 @@
                     </button>
                 </form>
             </div>
-            <div class="d-flex nav-item gap-3>
+            <div class="d-flex nav-item gap-3">
                 <div class="cart px-4 align-baseline">
                     @guest   
                         <a href="/cart">
