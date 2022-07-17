@@ -81,4 +81,5 @@ Route::middleware([VerifyLogin::class])->group(function () {
 
     Route::get('/orders', [TransactionController::class, 'order_list']);
     Route::get('/transaction/{id}', [TransactionController::class, 'order_detail']);
+    Route::post('/transaction/checkout/proceed-payment/{id}', [TransactionController::class, 'confirm_payment2']);
 });

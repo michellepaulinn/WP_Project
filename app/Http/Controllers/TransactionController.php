@@ -11,28 +11,30 @@ use Illuminate\Support\Facades\Gate;
 
 class TransactionController extends Controller
 {
-    public function view_transaction($id){
+    public function view_transaction($id)
+    {
         $transaction = Transaction::find($id);
         $dets = $transaction->transactionDetails;
         $total = 0;
-        foreach($dets as $det){
+        foreach ($dets as $det) {
             $total += $det->item->item_price;
         }
-        return view('transaction-detail', ['transaction'=>$transaction,'dets'=>$dets, 'total'=>$total]);
+        return view('transaction-detail', ['transaction' => $transaction, 'dets' => $dets, 'total' => $total]);
     }
 
-    public function confirm_payment($id, Request $req){
+    public function confirm_payment($id, Request $req)
+    {
         $transaction = Transaction::find($id);
         $transaction->transaction_status_id = $req->status;
         $transaction->save();
         return redirect()->back();
     }
 
-    public function order_list(){
-        if(Gate::inspect('isAdmin', Auth::user())->allowed()){
+    public function order_list()
+    {
+        if (Gate::inspect('isAdmin', Auth::user())->allowed()) {
             $trans = Transaction::all();
-        }
-        else{
+        } else {
             $trans = Auth::user()->transactions;
             // dd($trans);
         }
@@ -41,19 +43,33 @@ class TransactionController extends Controller
         return view('transaction-list', ['transaction' => $trans]);
     }
 
-    public function order_detail($id){
+    public function order_detail($id)
+    {
         $transaction = Transaction::where('id', $id)->first();
         // dd($transaction);
         $dets = $transaction->transactionDetails;
         $total = 0;
-        foreach($dets as $det){
+        foreach ($dets as $det) {
             $total += $det->item->item_price;
         }
 
-        if(Gate::inspect('isAdmin', Auth::user())->allowed()){
-            return view('admin-transactionDetail', ['transaction' => $transaction, 'dets'=>$dets, 'total'=>$total]);
-        }else{
-            return view('transaction-detail', ['transaction' => $transaction, 'dets'=>$dets, 'total'=>$total]);
+        if (Gate::inspect('isAdmin', Auth::user())->allowed()) {
+            return view('admin-transactionDetail', ['transaction' => $transaction, 'dets' => $dets, 'total' => $total]);
+        } else {
+            return view('transaction-detail', ['transaction' => $transaction, 'dets' => $dets, 'total' => $total]);
         }
+    }
+
+    public function confirm_payment2($id)
+    {
+        $trx = Transaction::find($id)->first();
+        // dd($proofImage);
+
+        $proofImage = "";
+        $proofImage = $trx->proof;
+
+        return view('confirmation-page', [
+            'img' => $proofImage
+        ]);
     }
 }
