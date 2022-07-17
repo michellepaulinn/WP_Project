@@ -5,7 +5,7 @@
 @section('content')
     {{-- <h3>Shipment Details</h3> --}}
     <hr>
-    <div class="container d-flex flex-col justify-content-end ">
+    <div class="container d-flex flex-col justify-content-end p-3">
         <div class="container">
             <h3>Detail Recipient:</h3>
             <form action="" method="post">

@@ -108,7 +108,7 @@ class CheckoutController extends Controller
         $cart = Cart::where('user_id', Auth::user()->id)->first();
         $cartDetails = $cart->cartDetails;
         $total = 0;
-        foreach($cartDetails as $cd){
+        foreach ($cartDetails as $cd) {
             $item = $cd->item;
             $total += $item->item_price;
             TransactionDetail::insert([
@@ -120,7 +120,7 @@ class CheckoutController extends Controller
             $item->item_status = false;
             $dets = $newTrans->transactionDetails;
         }
-        return view('transaction-detail',['transaction' => $newTrans, 'dets'=>$dets, 'total'=>$total]);
+        return view('transaction-detail', ['transaction' => $newTrans, 'dets' => $dets, 'total' => $total]);
     }
 
     public function upload_payment(Request $request, $id)

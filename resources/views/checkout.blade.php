@@ -3,7 +3,7 @@
 @section('title','Checkout')
 
 @section('content')
-    <div class="container">
+    <div class="container p-2">
         <h5>Checkout Detail</h5>
         <!-- {{-- @dd($transaction) --}} -->
         <div class="content d-flex justify-content-between row">
