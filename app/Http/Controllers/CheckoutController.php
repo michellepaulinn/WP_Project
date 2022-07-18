@@ -122,8 +122,10 @@ class CheckoutController extends Controller
                 ]
             ]);
             $item->item_status = false;
-            // $dets = $newTrans->transactionDetails;
+            $item->save();
+            $cd->delete();
         }
+        // $dets = $newTrans->transactionDetails;
 
         // dd($dets);
         return view('transaction-detail', ['transaction' => $newTrans, 'dets' => $cartDetails, 'total' => $total]);
