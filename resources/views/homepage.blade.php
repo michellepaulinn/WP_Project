@@ -57,7 +57,7 @@
         </div>
 
         {{-- Why should we Thrift? --}}
-        <div class="why d-flex p-4">
+        <div class="why bg-sec d-flex p-4 mb-4 rounded">
             <div class="left p-4 m-4">
                 <h3 class="title">Why thrift?</h3>
                 <p>
@@ -66,16 +66,16 @@
                 </p>
             </div>
             <div class="right">
-                <img src="https://i0.wp.com/isellerdotblog.wpcomstaging.com/wp-content/uploads/2022/03/unnamed-1.png?fit=512%2C384&ssl=1" alt="" style="width:50vh;">
+                <img src="https://i0.wp.com/isellerdotblog.wpcomstaging.com/wp-content/uploads/2022/03/unnamed-1.png?fit=512%2C384&ssl=1" alt="" class="rounded"style="width:50vh;">
             </div>
         </div>
 
         {{-- Shop By Category --}}
         <div class="text-center m-4"><h2 class="title">Shop By Category</h2></div>
-        <div class="ShopCategory text-center d-flex justify-content-center">
+        <div class="ShopCategory text-center d-flex justify-content-center mb-4">
             
             @foreach ($categories as $category)
-                <div class="col-md-3 mx-2 category">
+                <div class="mx-2 category">
                     <div class="d-flex card shadow-sm rounded text-white category-card">
                         <a href="/category/{{ $category->id }}">
                             <img class="card-img ctg-img" src="{{$category->category_thumbnail}}" alt="{{ $category->category_name }}">

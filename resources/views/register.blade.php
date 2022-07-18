@@ -4,7 +4,7 @@
 
 @section('auth-form')
     <div class="container-fluid py-3 d-flex justify-content-center h-100 col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="register card card-body text-white p-5" style="border-radius: 0.5rem;">
+        <div class="bg-sec card card-body text-white p-5" style="border-radius: 0.5rem;">
             <form action="/register-process" method="post" class="mb-md-5 px-5">
                 @if(session()->has('error'))
                     <div class="alert alert-danger">

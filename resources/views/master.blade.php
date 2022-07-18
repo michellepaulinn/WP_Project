@@ -41,10 +41,7 @@
         .ctg-item{
             margin-top: -45px;
         }
-        .register{
-            background-color: #ede6db;
-        }
-        .login{
+        .bg-sec{
             background-color: #ede6db;
         }
         .login>form{
