@@ -43,7 +43,7 @@
                 <div class="card border-1" style="color: #396854;background-color:#ede6db;">
                     @foreach ($images as $image)
                         @if ($image->item_id === $item->id)
-                            <img class="card-img-top p-3" src="/photos/{{$image->item_image}}" alt="Card image cap" width="272" height="240" style="max-width: 272px; max-height: 240;">                       
+                            <img class="card-img-top p-3" src="/photos/{{$image->item_image}}" alt="Card image cap">                       
                         @endif   
                     @endforeach
                     <div class="card-body text-center">
@@ -55,6 +55,13 @@
                @endforeach
             </div>
         </div>
+
+        {{-- Why should we Thrift? --}}
+        <div class="why">
+
+        </div>
+
+        {{-- Shop By Category --}}
         <div class="text-center m-4"><h2 class="title" style="color: #396854;font-weight:500;">Shop By Category</h2></div>
         <div class="ShopCategory text-center d-flex justify-content-center">
             
@@ -71,5 +78,7 @@
                 </div>
             @endforeach
         </div>
+
+        {{-- About Us --}}
     </div>
 @endsection

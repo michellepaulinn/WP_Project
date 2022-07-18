@@ -88,6 +88,11 @@
         font-size: 55px;
         color: #6b4f4f;
         }
+        .card-img-top{
+            width: 240px;
+            height: 240px;
+            object-fit: cover;
+        }
     </style>
   </head>
   <body>
