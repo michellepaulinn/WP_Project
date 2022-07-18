@@ -105,7 +105,7 @@
                 </form>
             </div>
             <div class="d-flex nav-item gap-3">
-                <div class="cart px-4 align-baseline">
+                <div class="cart px-4 align-self-center">
                     @guest   
                         <a href="/cart">
                             <span class="material-icons" style="color:#396854;">shopping_cart</span>
@@ -123,7 +123,7 @@
                         @endif
                     @endauth
                 </div>
-                <div class="profile px-4 dropdown">
+                <div class="profile px-4 dropdown align-self-center">
                     <a href="#" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                         <span class="material-icons" style="color:#396854;">person</span>
                     </a>
