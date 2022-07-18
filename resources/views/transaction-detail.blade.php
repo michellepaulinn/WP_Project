@@ -11,7 +11,7 @@
             <div class="content-left d-flex flex-column rounded shadow-sm col-sm">
                 <!-- {{-- {{dd($transaction)}} --}} -->
                 <!-- {{-- {{dd($transaction->transactionDetails())}} --}} -->
-                {{-- <h6>Items:</h6>
+                <h6>Items:</h6>
                 @foreach ($dets as $det)
                 <div class="card">
                     <div class="m-2 d-flex flex-row">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>    
-                @endforeach --}}
+                @endforeach
             </div>
         <!-- Form Pengiriman -->
             <div class="content-right col-sm">

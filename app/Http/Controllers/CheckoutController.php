@@ -107,7 +107,11 @@ class CheckoutController extends Controller
         //into trans det
         $cart = Cart::where('user_id', Auth::user()->id)->first();
         $cartDetails = $cart->cartDetails;
+        // dd($cartDetails);
         $total = 0;
+
+        // dd($cartDetails);
+        // dd($newTrans);
         foreach ($cartDetails as $cd) {
             $item = $cd->item;
             $total += $item->item_price;
@@ -118,9 +122,11 @@ class CheckoutController extends Controller
                 ]
             ]);
             $item->item_status = false;
-            $dets = $newTrans->transactionDetails;
+            // $dets = $newTrans->transactionDetails;
         }
-        return view('transaction-detail', ['transaction' => $newTrans, 'dets' => $dets, 'total' => $total]);
+
+        // dd($dets);
+        return view('transaction-detail', ['transaction' => $newTrans, 'dets' => $cartDetails, 'total' => $total]);
     }
 
     public function upload_payment(Request $request, $id)

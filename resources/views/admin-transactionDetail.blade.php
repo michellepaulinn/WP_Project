@@ -36,6 +36,8 @@
                 <!-- bikin validasi kalo belum bayar tampilin pesan belum dibayar, kalo udah tampilin fotonya -->
                 @if( $transaction->proof)
                     <img src="/images/payment/{{$transaction->proof}}" alt="">
+                @else
+                    <h5>Belum ada pembayaran</h5>
                 @endif
                 <p>{{$transaction->transactionStatus->status_name}}</p>
                 <!-- Form -->
@@ -47,7 +49,11 @@
                             <h2>IDR {{number_format($total )}}</h2>
                         </div>
                         <input type="hidden" name="total" value=2>
+                        @if($transaction->transactionStatus->id == 1)
+                        <a href="/admin/orders"><button class="btn btn-primary">Back to Order List</button></a>
+                        @else
                         <button type="submit" class="btn btn-primary">Confirm Payment</button>
+                        @endif
                     </form>
 
                 </div>
