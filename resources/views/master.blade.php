@@ -11,19 +11,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>@yield('title')</title> 
     <style>
-        .title{
+        body{
             font-family: 'Times New Roman', Times, serif;
             color: black;
         }
-        .title1{
-            font-family: 'Times New Roman', Times, serif;
-
-         }
-        .title2{
-            font-family: 'Times New Roman', Times, serif;
-            font-weight: 500;
-         }
-         
+        .title{
+            color: #396854;
+            font-weight:500;
+        }
         a{
             color: black;
             text-decoration: none;
@@ -68,26 +63,26 @@
         }
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-        height: 100px;
-        width: 100px;
-        outline: #6b4f4f;
+        height: 50px;
+        width: 50px;
+        outline: #396854;
         background-size: 100%, 100%;
         border-radius: 50%;
-        border: 5px solid #6b4f4f; 
-        background-image: none;
+        border: 5px solid #396854; 
+        background-color: #396854;
         }
 
-        .carousel-control-next-icon:after {
+        /* .carousel-control-next-icon:after {
         content: '>';
         font-size: 55px;
         color: #6b4f4f;
-        }
+        } */
 
-        .carousel-control-prev-icon:after {
+        /* .carousel-control-prev-icon:after {
         content: '<';
         font-size: 55px;
         color: #6b4f4f;
-        }
+        } */
         .card-img-top{
             width: 240px;
             height: 240px;
@@ -98,7 +93,7 @@
   <body>
     <header>
         <div class="nav justify-content-between d-flex gap-4 p-4 w-100" style="background-color: #ede6db;">
-            <a class="title nav-item navbar-brand" href="/" style="color:#396854;">
+            <a class="title nav-item navbar-brand" href="/">
                 <h3 class="">Thrift Store</h3>
             </a>
             <div class="search nav-item flex-grow-1 px-4 mx-4">
@@ -166,11 +161,11 @@
     @yield('auth-form')
     
     <div class="" style="background-color:#ede6db;">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 border-top" style="background-color: #ede6db">
-            <div class="col-md-4 d-flex align-items-center gap-4" style="background-color: #ede6db">
-                <div>
+        <footer class="d-flex flex-wrap justify-content-between align-items-center p-4 border-top" style="background-color: #ede6db">
+            <div class="col-md-4 d-flex align-items-center gap-2" style="background-color: #ede6db">
+                <div class="">
                     <a href="/" class="title">
-                        <h3 style="color: #396854">Thrift Store</h3>
+                        <h3>Thrift Store</h3>
                     </a>
                 </div>
                 <div><span class="text-muted mx-4">  &copy Thrift Company </span></div>

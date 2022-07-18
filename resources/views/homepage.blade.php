@@ -36,7 +36,7 @@
         </div>
         @endif
         <div class="newArrival">
-            <div class="text-center m-4"><h2 class="title" style="color: #396854;font-weight:500">New Arrivals</h2></div>
+            <div class="text-center m-4"><h2 class="title">New Arrivals</h2></div>
             <div class="d-flex container m-2 justify-content-between flex-wrap">
                @foreach ($items as $item)
                 <a href="/item/{{ $item->id }}" class="mx-2 my-4">
@@ -57,12 +57,21 @@
         </div>
 
         {{-- Why should we Thrift? --}}
-        <div class="why">
-
+        <div class="why d-flex p-4">
+            <div class="left p-4 m-4">
+                <h3 class="title">Why thrift?</h3>
+                <p>
+                    Globally, there are 92 million tonnes of fashion waste annually.
+                    Thrifting is one of ways to help the environment. It gives clothes second chances in life as well as reduce pollution and waste at the same time.
+                </p>
+            </div>
+            <div class="right">
+                <img src="https://i0.wp.com/isellerdotblog.wpcomstaging.com/wp-content/uploads/2022/03/unnamed-1.png?fit=512%2C384&ssl=1" alt="" style="width:50vh;">
+            </div>
         </div>
 
         {{-- Shop By Category --}}
-        <div class="text-center m-4"><h2 class="title" style="color: #396854;font-weight:500;">Shop By Category</h2></div>
+        <div class="text-center m-4"><h2 class="title">Shop By Category</h2></div>
         <div class="ShopCategory text-center d-flex justify-content-center">
             
             @foreach ($categories as $category)
@@ -80,5 +89,10 @@
         </div>
 
         {{-- About Us --}}
+        <div class="about-us text-center p-4 m-4">
+            <h2 class="mb-2 title">About Us</h2>
+            <p>Thrift store is a store that sells curated fashion</p>
+        </div>
+
     </div>
 @endsection
