@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\Item;
-use App\Models\CartDetail;
 use App\Models\ItemImage;
+use App\Models\CartDetail;
 use App\Models\Transaction;
-use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
+use App\Models\TransactionDetail;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CheckoutController extends Controller
 {
@@ -81,54 +82,73 @@ class CheckoutController extends Controller
 
     public function checkOut(Request $req)
     {
-        //new transaction
-        // dd($req);
-        $newTrans = new Transaction();
-        $newTrans->user_id = Auth::user()->id;
-        $newTrans->transaction_status_id = 1;
-        $newTrans->transaction_date = now();
-        $newTrans->recipient_name = $req->nama;
-        $newTrans->shipping_address = $req->address;
-        $newTrans->phone_number = $req->phone;
-        $newTrans->save();
+        $validator = Validator::make(
+            $req->all(),
+            [
+                'nama' => 'required',
+                'address' => 'required',
+                'phone' => 'required|numeric'
 
-        // Transaction::insert([
-        //     [
-        //         'user_id' => Auth::user()->id,
-        //         'transaction_status_id' =>1,
-        //         'transaction_date' => now(),
-        //         'recipient_name' => $req->nama,
-        //         'shipping_address' => $req->address,
-        //         'phone_number' => $req->phone
-        //     ]
-        // ])->get();
+            ],
+            [
+                'required' => 'Must be filled!',
+                'numeric' => 'Must be numeric!'
+            ]
+        );
 
-        // dd($newTrans);
-        //into trans det
-        $cart = Cart::where('user_id', Auth::user()->id)->first();
-        $cartDetails = $cart->cartDetails;
-        // dd($cartDetails);
-        $total = 0;
+        if ($validator->fails()) {
+            return redirect('/checkout')->with('error', 'Please input the right value')->withErrors($validator)->withInput();
+        } else {
 
-        // dd($cartDetails);
-        // dd($newTrans);
-        foreach ($cartDetails as $cd) {
-            $item = $cd->item;
-            $total += $item->item_price;
-            TransactionDetail::insert([
-                [
-                    'transaction_id' => $newTrans->id,
-                    'item_id' => $item->id,
-                ]
-            ]);
-            $item->item_status = false;
-            $item->save();
-            $cd->delete();
+            //new transaction
+            // dd($req);
+            $newTrans = new Transaction();
+            $newTrans->user_id = Auth::user()->id;
+            $newTrans->transaction_status_id = 1;
+            $newTrans->transaction_date = now();
+            $newTrans->recipient_name = $req->nama;
+            $newTrans->shipping_address = $req->address;
+            $newTrans->phone_number = $req->phone;
+            $newTrans->save();
+
+            // Transaction::insert([
+            //     [
+            //         'user_id' => Auth::user()->id,
+            //         'transaction_status_id' =>1,
+            //         'transaction_date' => now(),
+            //         'recipient_name' => $req->nama,
+            //         'shipping_address' => $req->address,
+            //         'phone_number' => $req->phone
+            //     ]
+            // ])->get();
+
+            // dd($newTrans);
+            //into trans det
+            $cart = Cart::where('user_id', Auth::user()->id)->first();
+            $cartDetails = $cart->cartDetails;
+            // dd($cartDetails);
+            $total = 0;
+
+            // dd($cartDetails);
+            // dd($newTrans);
+            foreach ($cartDetails as $cd) {
+                $item = $cd->item;
+                $total += $item->item_price;
+                TransactionDetail::insert([
+                    [
+                        'transaction_id' => $newTrans->id,
+                        'item_id' => $item->id,
+                    ]
+                ]);
+                $item->item_status = false;
+                $item->save();
+                $cd->delete();
+            }
+            // $dets = $newTrans->transactionDetails;
+
+            // dd($dets);
+            return view('transaction-detail', ['transaction' => $newTrans, 'dets' => $cartDetails, 'total' => $total]);
         }
-        // $dets = $newTrans->transactionDetails;
-
-        // dd($dets);
-        return view('transaction-detail', ['transaction' => $newTrans, 'dets' => $cartDetails, 'total' => $total]);
     }
 
     public function upload_payment(Request $request, $id)
@@ -151,28 +171,44 @@ class CheckoutController extends Controller
     {
         //validasi
         $request->validate([
-            'payment_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'payment_proof' => 'required|mimes:jpeg,png,jpg',
         ]);
 
-        //ambil data dari form
-        $extfile = $request->payment_proof->getClientOriginalExtension();
-        $file = $request->file('payment_proof');
-        $fileName = time() . "." . $extfile;
-        $file->move('images/payment', $fileName);
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'payment_proof' => 'required|mimes:jpeg,png,jpg'
+            ],
+            [
+                'required' => 'Must be filled!',
+                'mimes' => 'should be jpeg, png, and jpg'
+            ]
+        );
 
-        //ambil data dari transaction
-        $transaction = Transaction::where('id', $id)->first();
-        $transaction->transaction_status_id = 2;
-        $transaction->proof = $fileName;
-        $transaction->save();
+        if ($validator->fails()) {
+            return back()->with('error', 'Please upload the correct transaction proof')->withErrors($validator)->withInput();
+        } else {
 
-        //hapus item di cart
-        $cart = Cart::where('user_id', $transaction->user_id)->first();
-        $cartdetail = CartDetail::where('cart_id', $cart->id)->delete();
+            //ambil data dari form
+            $extfile = $request->payment_proof->getClientOriginalExtension();
+            $file = $request->file('payment_proof');
+            $fileName = time() . "." . $extfile;
+            $file->move('images/payment', $fileName);
+
+            //ambil data dari transaction
+            $transaction = Transaction::where('id', $id)->first();
+            $transaction->transaction_status_id = 2;
+            $transaction->proof = $fileName;
+            $transaction->save();
+
+            //hapus item di cart
+            $cart = Cart::where('user_id', $transaction->user_id)->first();
+            $cartdetail = CartDetail::where('cart_id', $cart->id)->delete();
 
 
-        return redirect('/')->with(['successPayment' => 'Success upload payment']);
+            return redirect('/')->with(['successPayment' => 'Success upload payment']);
 
-        // return "success";
+            // return "success";
+        }
     }
 }

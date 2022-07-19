@@ -40,14 +40,23 @@
                     <div class="form-floating">
                         <input type="text" class="form-control" name="nama" autofocus id="nama" placeholder="Receipient Name">
                         <label for="nama">Recepient Name</label>
+                        @error('nama')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-floating">
                         <textarea name="address" class="form-control" autofocus id="address" cols="30" rows="5" placeholder="Address"></textarea>
                         <label for="address">Shipping Address</label>
+                        @error('address')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-floating">
                         <input type="text" class="form-control" autofocus name="phone" id="phone" placeholder="Phone Number">
                         <label for="phone">Phone Number</label>
+                        @error('phone')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="my-3">
                         <h6>Total:</h6>
