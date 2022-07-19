@@ -58,7 +58,7 @@
                 <h5>Status:</h5>
                 <p class="fw-bold">{{$transaction->transactionStatus->status_name}}</p>
                 @if ($transaction->transactionStatus->id == 1)
-                <form action="/proceed-payment/{{$transaction->id}}" method="post">
+                <form action="/proceed-payment/{{$transaction->id}}" method="get">
                     @csrf
                     <input type="hidden" name="total" value="{{$total}}">
                     <button class="btn btn-prim btn-outline-light btn-lg px-5" type="submit">Bayar Sekarang</button>

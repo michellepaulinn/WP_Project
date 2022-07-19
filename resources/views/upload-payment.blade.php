@@ -5,6 +5,11 @@
 @section('content')
     {{-- <h3>Shipment Details</h3> --}}
     {{-- <hr> --}}
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="container d-flex flex-col justify-content-end p-4"style="min-height:73vh">
         <div class="container">
             <h3>Detail Recipient:</h3>

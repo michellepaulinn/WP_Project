@@ -170,9 +170,9 @@ class CheckoutController extends Controller
     public function process_upload_payment(Request $request, $id)
     {
         //validasi
-        $request->validate([
-            'payment_proof' => 'required|mimes:jpeg,png,jpg',
-        ]);
+        // $request->validate([
+        //     'payment_proof' => 'required|mimes:jpeg,png,jpg',
+        // ]);
 
         $validator = Validator::make(
             $request->all(),
