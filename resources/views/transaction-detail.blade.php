@@ -3,18 +3,18 @@
 @section('title','Transaction')
 
 @section('content')
-    <div class="container p-2" style="min-height:73vh;">
-        <h3 class="p-2">Transaction Detail</h3>
+    <div class="container p-2" style="min-height:75vh;">
+        <h3 class="bold py-2" style="color: #396854;font-weight:300;">Transaction Detail</h3>
         <!-- {{-- @dd($transaction) --}} -->
         <div class="content d-flex justify-content-between row">
         <!-- Cards Product -->
-            <div class="content-left d-flex flex-column col-sm">
+            <div class="content-left d-flex flex-column col-sm" style="padding-bottom: 18px;">
                 <!-- {{-- {{dd($transaction)}} --}} -->
                 <!-- {{-- {{dd($transaction->transactionDetails())}} --}} -->
-                <div>
-                    <h5>Transaction ID:</h5>
-                    <p>{{$transaction->id}}</p>
-                </div>
+                {{-- <div> --}}
+                    <h5>Transaction ID: {{$transaction->id}}</h5>
+                    
+                {{-- </div> --}}
                 <h5>Items:</h5>
                 @foreach ($dets as $det)
                 <div class="card bg-sec">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $det->item->item_name}}</h5>
+                                <h5 class="card-title" style="color: #396854">{{ $det->item->item_name}}</h5>
                                 <p class="card-text">
                                     <small class="text-muted text-light">IDR {{ number_format($det->item->item_price) }}</small>
                                 </p>

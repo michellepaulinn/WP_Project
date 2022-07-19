@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button class="btn btn-prim btn-outline-light btn-lg px-5" type="submit">Login</button>
+                    <button class="tbl btn btn-prim btn-outline-light btn-lg px-5" type="submit">Login</button>
                 </div>
             </form>
 

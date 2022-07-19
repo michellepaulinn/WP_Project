@@ -3,7 +3,7 @@
 @section('title', 'Transaction List')
 
 @section ('content')
-    <div class="container m-auto p-4">
+    <div class="container mx-auto p-5" style="min-height:420px;">
         {{-- {{dd($transaction)}} --}}
          @foreach ($transaction as $tr)
         <a href="/transaction/{{$tr->id}}">

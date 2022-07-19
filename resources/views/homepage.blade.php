@@ -29,12 +29,12 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        @if(Auth::check() and Auth::user()->role_id == '1')
+        {{-- @if(Auth::check() and Auth::user()->role_id == '1')
         <div class="edit-carousel d-flex justify-content-center mt-4 gap-4">
             <a href="/admin/view_slider_add" class="btn btn-success px-5 py-2">Add</a>
             <a href="/admin/view_slider_remove" class="btn btn-danger px-5 py-2">Delete</a>
         </div>
-        @endif
+        @endif --}}
         <div class="newArrival">
             <div class="text-center m-4"><h2 class="title">New Arrivals</h2></div>
             <div class="d-flex container m-2 justify-content-between flex-wrap">

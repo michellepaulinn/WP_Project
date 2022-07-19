@@ -38,6 +38,10 @@
             color :  #333;
             opacity: 0.4;
         }
+        .btn-prim:hover{
+            color: white;
+            background-color: #AB6954;
+        }
         .ctg-item{
             margin-top: -45px;
         }
@@ -94,7 +98,7 @@
   <body>
     <header>
         <div class="nav justify-content-between d-flex gap-4 p-4 w-100" style="background-color: #ede6db;">
-            <a class="title nav-item navbar-brand" href="/">
+            <a class="title nav-item navbar-brand" href="/" style="text-decoration: none;">
                 <h3 class="">Thrift Store</h3>
             </a>
             <div class="search nav-item flex-grow-1 px-4 mx-4">
@@ -145,6 +149,8 @@
                             </li>
                             @if(auth()->user()->role_id == 1)
                             <a class="dropdown-item" href="/admin/orders">Orders</a>
+                            <a class="dropdown-item" href="/admin/view_slider_add">Add Slider</a>
+                            <a class="dropdown-item" href="/admin/view_slider_remove">Delete Slider</a>
                             @else
                             <a class="dropdown-item" href="/orders">My Orders</a>
                             @endif

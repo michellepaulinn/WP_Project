@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="container">
-        <h5>Transaction Detail</h5>
+        <h3 class="bold py-2" style="color: #396854;font-weight:300;">Transaction Detail</h3>
         <!-- {{-- @dd($transaction) --}} -->
         <div class="content d-flex justify-content-between row">
         <!-- Cards Product -->
-            <div class="content-left d-flex flex-column rounded shadow-sm col-sm">
+            <div class="content-left d-flex flex-column rounded shadow-sm col-sm" style="padding-bottom: 15px;margin-bottom: 28px;">
                 <!-- {{-- {{dd($transaction)}} --}} -->
                 <!-- {{-- {{dd($transaction->transactionDetails())}} --}} -->
                 <h6>Items:</h6>
@@ -20,7 +20,7 @@
                         </div>
                         <div class="">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $det->item->item_name}}</h5>
+                                <h5 class="card-title" style="color: #396854">{{ $det->item->item_name}}</h5>
                                 <p class="card-text">
                                     <small class="text-muted text-light">IDR {{ number_format($det->item->item_price) }}</small>
                                 </p>
@@ -52,7 +52,7 @@
                         @if($transaction->transactionStatus->id == 1)
                         <a href="/admin/orders"><button class="btn btn-primary">Back to Order List</button></a>
                         @else
-                        <button type="submit" class="btn btn-primary">Confirm Payment</button>
+                        <button type="submit" class="btn btn-prim">Confirm Payment</button>
                         @endif
                     </form>
 
