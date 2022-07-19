@@ -25,7 +25,7 @@
                 <!-- Update -->
                     <a href="/admin/view_update_item/{{ $item->id }}" class="btn btn-success">Update</a>
                 <!-- Delete -->
-                    <a href="/admin/delete_item/{{ $item->id }}" class="btn btn-danger">Delete</a>
+                    <a href="/admin/delete_item/{{ $item->id }}" onclick=" return confirm('Are You Sure?')" class="btn btn-danger">Delete</a>
             @else
                 <form action="/cart" method="post" class="mx-4">
                     @csrf

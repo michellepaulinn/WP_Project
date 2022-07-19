@@ -44,8 +44,8 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="d-flex flex-row justify-content-between align-items-end mt-5">
-                    <button class="btn btn-outline-light btn-lg px-3" type="submit" style="color: #396854">Add Item</button>
+                <div class="d-flex flex-column justify-content-between mt-4 ">
+                    <button class="btn btn-prim btn-outline-light btn-lg px-3" type="submit">Add Item</button>
                 </div>
             </form>
         </div>

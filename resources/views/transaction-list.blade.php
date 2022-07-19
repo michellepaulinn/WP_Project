@@ -8,7 +8,7 @@
          @foreach ($transaction as $tr)
         <a href="/transaction/{{$tr->id}}">
             <div class="card p-2 m-2 bg-sec">
-                <div class="card-title"> <h5 class=" fw-bold p-3"> {{$tr->transactionStatus->status_name}} </h5> </div>
+                <div class="card-title"> <h5 class="fw-bold p-3"> {{$tr->transactionStatus->status_name}} </h5> </div>
                 <div class="card-body d-flex row mt-0">
                     <div class="card-text">
                          <p>Transaction id : {{ $tr->id }}</p> 

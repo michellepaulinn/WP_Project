@@ -35,7 +35,7 @@
             <p>Upload proof of transaction below:</p>
             <form action="/checkout/proceed-payment/uploads/{{ $trx->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="payment_proof" id="payment_proof" class="form-control">
+                <input type="file" name="payment_proof" required id="payment_proof" class="form-control">
                 <button type="submit" class=" mt-3 btn btn-prim btn-outline-light btn-lg px-5">Upload</button>
             </form>
         </div>
