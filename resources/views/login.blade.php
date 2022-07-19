@@ -5,7 +5,7 @@
 @section('auth-form')
     <div class="container-fluid py-5 d-flex justify-content-center h-100 col-12 col-md-8 col-lg-6 col-xl-5" style="padding-bottom: 0px;padding-top:0px;">
         <div class="login bg-sec card card-body text-white p-5" style="border-radius: 0.5rem;">
-            <form action="/login-process" method="post" class="mb-md-5 px-5">
+            <form action="/login-process" method="post" class="mb-3 md-5 px-5">
                 <h2 class="fw-bold mb-2 text-uppercase text-center">Login</h2>
                 @if(session()->has('error'))
                         <div class="alert alert-danger">
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button class="btn btn-outline-light btn-lg px-5" type="submit" style="color: #396854;">Login</button>
+                    <button class="btn btn-prim btn-outline-light btn-lg px-5" type="submit">Login</button>
                 </div>
             </form>
 

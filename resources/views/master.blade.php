@@ -41,6 +41,10 @@
         .ctg-item{
             margin-top: -45px;
         }
+        .btn-prim{
+            background-color: #396854;
+            color: white;
+        }
         .bg-sec{
             background-color: #ede6db;
         }

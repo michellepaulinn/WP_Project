@@ -4,7 +4,7 @@
 
 @section('auth-form')
     <div class="container-fluid py-3 d-flex justify-content-center h-100 col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="bg-sec card card-body text-white p-5" style="border-radius: 0.5rem;">
+        <div class="bg-sec card card-body p-5" style="border-radius: 0.5rem; color:#396854;">
             <form action="/register-process" method="post" class="mb-md-5 px-5">
                 @if(session()->has('error'))
                     <div class="alert alert-danger">
@@ -58,12 +58,11 @@
                     @enderror
                 </div>
 
-                <div class="d-flex flex-row justify-content-between align-items-end mt-5">
-                    <p class="mb-0">
+                <div class="d-flex flex-column justify-content-between">
+                    <button class="btn btn-prim btn-outline-light btn-lg px-3" type="submit">REGISTER</button>
+                    <p class="mt-3 text-center">
                         <a href="/login" class="fw-bold" style="color: #396854">Already registered? Login here!</a>
                     </p>
-
-                    <button class="btn btn-outline-light btn-lg px-3" type="submit" style="color: #396854">REGISTER</button>
                 </div>
             </form>
         </div>

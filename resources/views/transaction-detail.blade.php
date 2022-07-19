@@ -3,17 +3,21 @@
 @section('title','Transaction')
 
 @section('content')
-    <div class="container p-2">
-        <h5>Transaction Detail</h5>
+    <div class="container p-2" style="min-height:73vh;">
+        <h3 class="p-2">Transaction Detail</h3>
         <!-- {{-- @dd($transaction) --}} -->
         <div class="content d-flex justify-content-between row">
         <!-- Cards Product -->
-            <div class="content-left d-flex flex-column rounded shadow-sm col-sm">
+            <div class="content-left d-flex flex-column col-sm">
                 <!-- {{-- {{dd($transaction)}} --}} -->
                 <!-- {{-- {{dd($transaction->transactionDetails())}} --}} -->
-                <h6>Items:</h6>
+                <div>
+                    <h5>Transaction ID:</h5>
+                    <p>{{$transaction->id}}</p>
+                </div>
+                <h5>Items:</h5>
                 @foreach ($dets as $det)
-                <div class="card">
+                <div class="card bg-sec">
                     <div class="m-2 d-flex flex-row">
                         <div class="">
                             <img src="/photos/{{ $det->item->itemImage->item_image }}" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="50" width="90">
@@ -32,17 +36,32 @@
             </div>
         <!-- Form Pengiriman -->
             <div class="content-right col-sm">
+                <h5>Recipient:</h5>
+                <form action="" method="post">
+                    <div class="form-floating">
+                        <input type="" class="form-control" id="floatingInput" placeholder="name@example.com" value="{{ $transaction->recipient_name }}" readonly>
+                        <label for="floatingInput">Name</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingPhone" placeholder="Address" value="{{  $transaction->phone_number }}" readonly >
+                        <label for="floatingPassword">Phone</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="floatingAddress" placeholder="Address" value="{{  $transaction->shipping_address }}" readonly >
+                        <label for="floatingPassword">Address</label>
+                    </div>
+                </form>
                 <div class="my-3">
-                    <h6>Total:</h6>
+                    <h5>Total:</h5>
                     <h2>IDR {{number_format($total )}}</h2>
                 </div>
-                <h6>Transaction Status</h6>
-                <p>{{$transaction->transactionStatus->status_name}}</p>
+                <h5>Status:</h5>
+                <p class="fw-bold">{{$transaction->transactionStatus->status_name}}</p>
                 @if ($transaction->transactionStatus->id == 1)
                 <form action="/proceed-payment/{{$transaction->id}}" method="post">
                     @csrf
                     <input type="hidden" name="total" value="{{$total}}">
-                    <input type="submit" value="Bayar Sekarang">
+                    <button class="btn btn-prim btn-outline-light btn-lg px-5" type="submit">Bayar Sekarang</button>
                 </form>
                 @endif
             </div>
