@@ -19,7 +19,7 @@
                     <h6>IDR {{number_format($total)}}</h6>
                 </div>
                 <div>
-                    @if($tr->transaction_status_id == 5 || Auth::check() and Auth::user()->role_id == '2')
+                    @if(($tr->transaction_status_id == 5 or $tr->transaction_status_id == 6) or Auth::check() and Auth::user()->role_id == '2')
                     <a href="/transaction/{{$tr->id}}" class="btn btn-prim mt-2 mb-2">View Transaction Detail</a>
                     @else
                     <a href="/transaction/{{$tr->id}}" class="btn btn-prim mt-2 mb-2">Update Transaction Status</a>
