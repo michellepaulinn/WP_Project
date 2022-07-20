@@ -20,7 +20,11 @@
                 <div class="card bg-sec">
                     <div class="m-2 d-flex flex-row">
                         <div class="">
-                            <img src="/photos/{{ $det->item->itemImage->item_image }}" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="50" width="90">
+                            @foreach ($det->item->itemImages as $img)
+                                @if ($loop->first)
+                                    <img src="/photos/{{ $img->item_image }}" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="50" width="90">
+                                @endif
+                            @endforeach
                         </div>
                         <div class="">
                             <div class="card-body">
@@ -58,11 +62,18 @@
                 <h5>Status:</h5>
                 <p class="fw-bold">{{$transaction->transactionStatus->status_name}}</p>
                 @if ($transaction->transactionStatus->id == 1)
-                <form action="/proceed-payment/{{$transaction->id}}" method="get">
-                    @csrf
-                    <input type="hidden" name="total" value="{{$total}}">
-                    <button class="btn btn-prim btn-outline-light btn-lg px-5" type="submit">Bayar Sekarang</button>
-                </form>
+                <div class="d-flex gap-4">
+                    <form action="/proceed-payment/{{$transaction->id}}" method="get">
+                        @csrf
+                        <input type="hidden" name="total" value="{{$total}}">
+                        <button class="btn btn-prim btn-outline-light btn-lg px-5" type="submit">Make Payment</button>
+                    </form>
+                    <form action="checkout/proceed-payment/{{$transaction->id}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="total" id="total" value=6>
+                        <button type="submit" class="btn btn-lg btn-danger">Cancel Order</button>
+                    </form>
+                </div>
                 @endif
             </div>
     </div>

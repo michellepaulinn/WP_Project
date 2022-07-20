@@ -20,6 +20,8 @@ class TransactionStatusSeeder extends Seeder
             ['status_name' => 'Waiting for order to be shipped'], //bayar udah dikonfirmasi
             ['status_name' => 'Order is shipped'],
             ['status_name' => 'Transaction Completed'],
+            ['status_name' => 'Cancelled'],
+
         ]);
     }
 }

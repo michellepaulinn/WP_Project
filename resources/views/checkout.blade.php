@@ -16,7 +16,11 @@
                 <div class="card">
                     <div class="m-2 d-flex flex-row">
                         <div class="">
-                            <img src="/photos/{{ $det->item->itemImage->item_image }}" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="50" width="90">
+                            @foreach ($det->item->itemImages as $img)
+                                @if ($loop->first)
+                                    <img src="/photos/{{ $img->item_image }}" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="50" width="90">
+                                @endif
+                            @endforeach    
                         </div>
                         <div class="">
                             <div class="card-body">
@@ -64,7 +68,7 @@
                     </div>
                     
                     <input type="hidden" name="total" value="{{ $total }}">
-                    <button type="submit" class="btn btn-primary">Make Order</button>
+                    <button type="submit" class="btn btn-prim">Make Order</button>
                 </form>
 
             </div>

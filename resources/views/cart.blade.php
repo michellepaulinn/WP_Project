@@ -11,7 +11,11 @@
                 <div class="card w-100 shadow bg-white rounded">
                     <div class="row g-0 m-2">
                         <div class="col">
-                            <img src="/photos/{{ $cartDetail->item->itemImage->item_image }}" class=" img-fluid rounded-start" alt="GAMBAR FASHION" height="50" width="90">
+                            @foreach ($cartDetail->item->itemImages as $img)
+                                @if ($loop->first)
+                                    <img src="/photos/{{ $img->item_image }}" class="img-fluid rounded-start" alt="GAMBAR FASHION" height="50" width="90">
+                                @endif
+                            @endforeach
                         </div>
                         
                         <div class="col-md-7">
