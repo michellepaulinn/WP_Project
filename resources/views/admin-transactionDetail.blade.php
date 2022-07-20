@@ -49,7 +49,7 @@
                 <p>Transaction Status: </p>
                 <h4 class="inline-block m-auto">{{$transaction->transactionStatus->status_name}}</h4>
                 <!-- Form -->
-                <div class="form">        
+                <div class="form" style="margin-bottom: 20px;">        
                     <form action="checkout/proceed-payment/{{$transaction->id}}" method="POST">
                         @csrf
                         <div class="my-3">
