@@ -9,7 +9,7 @@
     <!-- Cards Picture of proof -->
         <div class="content-left d-flex flex-column rounded shadow-sm col-sm">
             @if(!$img)
-                <h6>Transaction Proof hasn't uploaded yet...</h6>
+                <h6>Transaction Proof hasn't been uploaded yet...</h6>
             
             @else
                 <h6>Transaction Proof</h6>

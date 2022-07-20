@@ -3,12 +3,12 @@
 @section('title','Transaction')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="min-height:73vh">
         <h3 class="bold py-2" style="color: #396854;font-weight:300;">Transaction Detail</h3>
         <!-- {{-- @dd($transaction) --}} -->
         <div class="content d-flex justify-content-between row">
         <!-- Cards Product -->
-            <div class="content-left d-flex flex-column rounded shadow-sm col-sm" style="padding-bottom: 15px;margin-bottom: 28px;">
+            <div class="content-left d-flex flex-column col-sm" style="padding-bottom: 15px;margin-bottom: 28px;">
                 <!-- {{-- {{dd($transaction)}} --}} -->
                 <!-- {{-- {{dd($transaction->transactionDetails())}} --}} -->
                 <h6>Items:</h6>
@@ -32,17 +32,17 @@
             </div>
         <!-- Form Pengiriman -->
             <div class="content-right col-sm m-auto">
-                <h6>Transaction Status</h6>
-                <div class="card m-auto" style="width: 18rem">
+                <h6>Payment:</h6>
+                <div class="card m-auto " style="width: 18rem">
                 <!-- bikin validasi kalo belum bayar tampilin pesan belum dibayar, kalo udah tampilin fotonya -->
                     @if( $transaction->proof)
                         <img src="/images/payment/{{$transaction->proof}}" class="card-img-top m-auto" alt="">
-                        <p class="m-auto">Bukti Transaksi</p>
+                        <p class="m-auto">Transaction Proof</p>
                     @else
-                        <h5 class="m-auto">Belum ada bukti transaksi</h5>
+                        <h5 class="m-auto">Payment has not been made</h5>
                     @endif
                 </div>
-                <p>Status pesanan: </p>
+                <p>Transaction Status: </p>
                 <h4 class="inline-block m-auto">{{$transaction->transactionStatus->status_name}}</h4>
                 <!-- Form -->
                 <div class="form">        
