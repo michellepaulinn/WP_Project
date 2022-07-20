@@ -54,16 +54,16 @@
                         </div>
                         
                         @if($transaction->transactionStatus->id == 1)
-                        <a href="/admin/orders"><button class="btn btn-primary">Back to Order List</button></a>
+                        <a href="/admin/orders"><button class="btn btn-primary">Back to Transaction List</button></a>
                         @elseif($transaction->transactionStatus->id == 2)
                         <input type="hidden" name="total" id="total" value=3>
                         <button type="submit" class="btn btn-prim">Confirm Payment</button>
                         @elseif($transaction->transactionStatus->id == 3)
                         <input type="hidden" name="total" id="total" value=4>
-                        <button type="submit" class="btn btn-success">Paket Telah dikirim</button>
+                        <button type="submit" class="btn btn-prim">Order is shipped</button>
                         @elseif($transaction->transactionStatus->id == 4)
                         <input type="hidden" name="total" id="total" value=5>
-                        <button type="submit" class="btn btn-success">Paket Telah diterima</button>
+                        <button type="submit" class="btn btn-prim">Finish Transaction</button>
                         @endif
                     </form>
 

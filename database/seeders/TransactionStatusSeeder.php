@@ -15,11 +15,11 @@ class TransactionStatusSeeder extends Seeder
     public function run()
     {
         TransactionStatus::insert([
-            ['status_name'=>'Menunggu Pembayaran'],
-            ['status_name' => 'Menunggu Pembayaran dikonfirmasi'],
-            ['status_name' => 'Menunggu Paket dikirimkan'], //bayar udah dikonfirmasi
-            ['status_name' => 'Paket sedang dalam pengiriman'],
-            ['status_name' => 'Transaksi Selesai'],
+            ['status_name'=>'Waiting for payment'],
+            ['status_name' => 'Waiting for payment to be confirmed'],
+            ['status_name' => 'Waiting for order to be shipped'], //bayar udah dikonfirmasi
+            ['status_name' => 'Order is shipped'],
+            ['status_name' => 'Transaction Completed'],
         ]);
     }
 }

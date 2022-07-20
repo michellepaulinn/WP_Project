@@ -24,9 +24,9 @@ class Item extends Model
         return $this->hasMany(cartDetail::class);
     }
 
-    public function itemImage()
+    public function itemImages()
     {
-        return $this->hasOne(itemImage::class);
+        return $this->hasMany(itemImage::class);
     }
 
     public function transactionDetail()

@@ -12,9 +12,10 @@
             {{ session('warning') }}
         </div>
     @endif
-    
-    <div class="container-fluid py-3 d-flex justify-content-center h-100 col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card card-body text-white p-5" style="border-radius: 0.5rem;background-color:#ede6db;">
+    <div class="align-items-center d-flex" style="min-height:73vh;">
+
+        <div class="container-fluid py-3 d-flex justify-content-center col-12 col-md-8 col-lg-6 col-xl-5"  >
+            <div class="card card-body text-white p-5" style="border-radius: 0.5rem;background-color:#ede6db;">
             <form action="/admin/slider_add_process" method="post" class="mb-md-5 px-5" enctype="multipart/form-data" style="color: #396854;font-weight:500;">
                 @csrf
                 <h2 class="fw-bold mb-5 text-uppercase text-center">Add Slider Image</h2>

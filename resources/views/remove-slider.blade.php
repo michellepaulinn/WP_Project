@@ -8,8 +8,10 @@
         {{ session('alert') }}
     </div>
     @endif
-    <div class="manage-games" style="padding-bottom: 50px; padding-top:18px;">
-        <div class="game-list container d-flex flex-column align-items-center gap-2 mt-4" style="color: #396854;">
+    <div style="min-height:73vh;">
+
+        <div class="manage-games" style="padding-bottom: 50px; padding-top:18px;">
+            <div class="game-list container d-flex flex-column align-items-center gap-2 mt-4" style="color: #396854;">
             <h1>Image Slider</h1>
 
             @foreach($sliders as $slider)
@@ -38,11 +40,12 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
-            
-            @if ($sliders->isEmpty())
+                @endforeach
+                
+                @if ($sliders->isEmpty())
                 <h3 class="card w-100 shadow bg-white rounded text-center p-4">There is no Item in Image Slider</h3>
-            @endif
+                @endif
+            </div>
         </div>
     </div>
 @endsection

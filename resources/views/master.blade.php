@@ -42,6 +42,9 @@
             color: white;
             background-color: #AB6954;
         }
+        a:hover{
+            color:#AB6954;
+        }
         .ctg-item{
             margin-top: -45px;
         }
@@ -76,7 +79,10 @@
         border: 5px solid #396854; 
         background-color: #396854;
         }
-
+        .dropdown-item:focus{
+            color: white;
+            background-color: #AB6954;
+        }
         /* .carousel-control-next-icon:after {
         content: '>';
         font-size: 55px;

@@ -20,6 +20,10 @@ class ItemImageSeeder extends Seeder
                 'item_image' => 'Crop-Cardigan.jpg'
             ],
             [
+                'item_id'=>1,
+                'item_image' => 'cardigan.jpg'
+            ],
+            [
                 'item_id'=>2,
                 'item_image' => 'cardigan.jpg'
             ],
