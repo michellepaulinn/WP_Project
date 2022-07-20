@@ -24,10 +24,11 @@ class TransactionController extends Controller
 
     public function confirm_payment($id, Request $req)
     {
+        // dd($req->total);
         $transaction = Transaction::find($id);
-        $transaction->transaction_status_id = $req->status;
+        $transaction->transaction_status_id = $req->total;
         $transaction->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Transaction has confirmed');
     }
 
     public function order_list()

@@ -48,7 +48,7 @@
                             <h6>Total:</h6>
                             <h2>IDR {{number_format($total )}}</h2>
                         </div>
-                        <input type="hidden" name="total" value=2>
+                        <input type="hidden" name="total" id="total" value=3>
                         @if($transaction->transactionStatus->id == 1)
                         <a href="/admin/orders"><button class="btn btn-primary">Back to Order List</button></a>
                         @else
