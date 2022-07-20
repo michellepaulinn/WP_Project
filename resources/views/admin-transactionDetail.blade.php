@@ -33,10 +33,10 @@
         <!-- Form Pengiriman -->
             <div class="content-right col-sm m-auto">
                 <h6>Payment:</h6>
-                <div class="card m-auto " style="width: 18rem">
+                <div class="card m-auto " style="width: 30rem">
                 <!-- bikin validasi kalo belum bayar tampilin pesan belum dibayar, kalo udah tampilin fotonya -->
                     @if( $transaction->proof)
-                        <img src="/images/payment/{{$transaction->proof}}" class="card-img-top m-auto" alt="">
+                        <img src="/images/payment/{{$transaction->proof}}" style="width: 100%" class="card-img-top m-auto" alt="">
                         <p class="m-auto">Transaction Proof</p>
                     @else
                         <h5 class="m-auto">Payment has not been made</h5>
