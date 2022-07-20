@@ -31,15 +31,19 @@
                 @endforeach
             </div>
         <!-- Form Pengiriman -->
-            <div class="content-right col-sm">
+            <div class="content-right col-sm m-auto">
                 <h6>Transaction Status</h6>
+                <div class="card m-auto" style="width: 18rem">
                 <!-- bikin validasi kalo belum bayar tampilin pesan belum dibayar, kalo udah tampilin fotonya -->
-                @if( $transaction->proof)
-                    <img src="/images/payment/{{$transaction->proof}}" alt="">
-                @else
-                    <h5>Belum ada pembayaran</h5>
-                @endif
-                <p>{{$transaction->transactionStatus->status_name}}</p>
+                    @if( $transaction->proof)
+                        <img src="/images/payment/{{$transaction->proof}}" class="card-img-top m-auto" alt="">
+                        <p class="m-auto">Bukti Transaksi</p>
+                    @else
+                        <h5 class="m-auto">Belum ada bukti transaksi</h5>
+                    @endif
+                </div>
+                <p>Status pesanan: </p>
+                <h4 class="inline-block m-auto">{{$transaction->transactionStatus->status_name}}</h4>
                 <!-- Form -->
                 <div class="form">        
                     <form action="checkout/proceed-payment/{{$transaction->id}}" method="POST">
@@ -48,11 +52,18 @@
                             <h6>Total:</h6>
                             <h2>IDR {{number_format($total )}}</h2>
                         </div>
-                        <input type="hidden" name="total" id="total" value=3>
+                        
                         @if($transaction->transactionStatus->id == 1)
                         <a href="/admin/orders"><button class="btn btn-primary">Back to Order List</button></a>
-                        @else
+                        @elseif($transaction->transactionStatus->id == 2)
+                        <input type="hidden" name="total" id="total" value=3>
                         <button type="submit" class="btn btn-prim">Confirm Payment</button>
+                        @elseif($transaction->transactionStatus->id == 3)
+                        <input type="hidden" name="total" id="total" value=4>
+                        <button type="submit" class="btn btn-success">Paket Telah dikirim</button>
+                        @elseif($transaction->transactionStatus->id == 4)
+                        <input type="hidden" name="total" id="total" value=5>
+                        <button type="submit" class="btn btn-success">Paket Telah diterima</button>
                         @endif
                     </form>
 
