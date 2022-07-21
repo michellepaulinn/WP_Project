@@ -68,9 +68,8 @@
                         <input type="hidden" name="total" value="{{$total}}">
                         <button class="btn btn-prim btn-outline-light btn-lg px-5" type="submit">Make Payment</button>
                     </form>
-                    <form action="checkout/proceed-payment/{{$transaction->id}}" method="POST">
+                    <form action="/cancel/{{$transaction->id}}" method="POST">
                         @csrf
-                        <input type="hidden" name="total" id="total" value=6>
                         <button type="submit" class="btn btn-lg btn-danger">Cancel Order</button>
                     </form>
                 </div>

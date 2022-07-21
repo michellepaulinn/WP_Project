@@ -76,9 +76,14 @@ Route::middleware([VerifyLogin::class])->group(function () {
     Route::get('/proceed-payment/{id}', [CheckoutController::class, 'upload_payment']);
     // Route::post('/checkout/proceed-payment/{id}', [CheckoutController::class, 'upload_payment']);
     //for process upload
+    //user upload
     Route::post('checkout/proceed-payment/uploads/{id}', [CheckoutController::class, 'process_upload_payment']);
 
+    //untuk admin update status
+    Route::post('/transaction/{id}/update',[TransactionController::class, 'update_trans']);
+    //untuk user cancel order
+    Route::post('/cancel/{id}',[TransactionController::class, 'cancel_trans']);
     Route::get('/orders', [TransactionController::class, 'order_list']);
     Route::get('/transaction/{id}', [TransactionController::class, 'order_detail']);
-    Route::post('/transaction/checkout/proceed-payment/{id}', [TransactionController::class, 'confirm_payment']);
+    // Route::post('/transaction/checkout/proceed-payment/{id}', [TransactionController::class, 'confirm_payment']);
 });

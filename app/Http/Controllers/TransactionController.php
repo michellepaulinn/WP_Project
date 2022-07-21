@@ -22,13 +22,39 @@ class TransactionController extends Controller
         return view('transaction-detail', ['transaction' => $transaction, 'dets' => $dets, 'total' => $total]);
     }
 
-    public function confirm_payment($id, Request $req)
-    {
-        // dd($req->total);
+    // public function confirm_payment($id, Request $req)
+    // {
+    //     // dd($req->total);
+    //     $transaction = Transaction::find($id);
+    //     $transaction->transaction_status_id = $req->total;
+    //     $transaction->save();
+    //     return redirect()->back()->with('success', 'Transaction has been confirmed');
+    // }
+
+    public function update_trans($id, Request $req){
         $transaction = Transaction::find($id);
-        $transaction->transaction_status_id = $req->total;
+        $transaction->transaction_status_id = $req->stat;
+        if($req->stat == 6){
+            foreach($transaction->transactionDetails as $det){
+                $det->item->item_status = true;
+                $det->item->save();
+            }
+
+        }
         $transaction->save();
-        return redirect()->back()->with('success', 'Transaction has confirmed');
+    }
+
+    public function cancel_trans($id){
+        // dd($id);
+        $transaction = Transaction::find($id);
+        $transaction->transaction_status_id = 6;
+        foreach($transaction->transactionDetails as $det){
+            $det->item->item_status = true;
+            $det->item->save();
+        }
+        $transaction->save();
+
+        return redirect()->back();
     }
 
     public function order_list()
