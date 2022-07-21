@@ -4,19 +4,15 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Item;
 use App\Models\ItemImage;
-use App\Models\ItemImages;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
     public function searchItem(Request $req){
-        $items = Item::where('item_name', 'LIKE', "%$req->keyword%")->get();
-        $images = ItemImage::all();
-        //->paginate(15);
+        $items = Item::where('item_name', 'LIKE', "%$req->keyword%")->paginate(12);
+        
         return view('searchItem',[
-            "items" => $items,
-            "name" => $req->account_name,
-            "images" => $images
+            "items" => $items
         ]);
     }
 
