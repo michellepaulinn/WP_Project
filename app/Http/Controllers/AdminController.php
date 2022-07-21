@@ -6,6 +6,8 @@ use App\Models\Category;
 use App\Models\Item;
 use App\Models\ItemImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -28,6 +30,7 @@ class AdminController extends Controller
         ]);
         $item = Item::create([
             'item_name' => $req->item_name,
+            'item_slug' => Str::slug($req->item_name),
             'item_price' => $req->item_price,
             'description' => $req->description,
             'category_id' => $req->category,
@@ -42,17 +45,17 @@ class AdminController extends Controller
         ]);
         // dd($item);
         if ($item && $itemImage) {
-            return redirect('/');
+            return redirect('/')->with('successItem', 'Success Add Item');
         }
         return redirect()->back()->with('error', 'Add Item Failed!');
     }
 
     //Update & Delete (UD)
     //Form Update
-    public function view_update($id)
+    public function view_update($slug)
     {
         $categories = Category::all();
-        $item = Item::find($id);
+        $item = Item::where('item_slug', $slug)->first();
         return view('update_item', ["categories"=> $categories,"item"=>$item]);
     }
 
@@ -69,6 +72,7 @@ class AdminController extends Controller
 
         $item = Item::findOrFail($id);
         $item->item_name = $req->item_name;
+        $item->item_slug = Str::slug($req->item_name);
         $item->item_price = $req->item_price;
         $item->description = $req->description;
         $item->category_id = $req->category;
@@ -77,8 +81,12 @@ class AdminController extends Controller
 
         //logic item image belom
         //Delete Item Image lama
-        $itemImage = ItemImage::where('item_id', $id)->first();
-        $itemImage->delete();
+        $itemImage = ItemImage::where('item_id', $id)->get();
+        foreach ($itemImage as $image) {
+            File::delete(public_path('photos/' . $image->item_image));
+            $image->delete();
+        }
+
         //Simpan Item Image baru 
         $extension = $req->image->extension();
         $item_file_name = time() . '.' . $extension;
@@ -87,14 +95,20 @@ class AdminController extends Controller
             'item_id' => $id,
             'item_image' => $item_file_name
         ]);
-        return redirect('/');
+
+        return redirect('/')->with('successItem', 'Success Update Item');
     }
-    public function delete_item($id)
+
+    public function delete_item($slug)
     {
-        $item = Item::findOrFail($id);
-        $itemImage = ItemImage::where('item_id', $id)->first();
-        $itemImage->delete();
+        $item = Item::where('item_slug', $slug)->first();
+        $itemImage = ItemImage::where('item_id', $item->id)->get();
+        foreach ($itemImage as $image) {
+            File::delete(public_path('photos/' . $image->item_image));
+            $image->delete();
+        }
+
         $item->delete();
-        return redirect('/');
+        return redirect('/')->with('successItem', 'Success Delete Item');
     }
 }

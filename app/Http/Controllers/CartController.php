@@ -30,17 +30,17 @@ class CartController extends Controller
 
     public function addToCart(Request $request){
         $cart = Cart::where('user_id', Auth::user()->id)->first();
+        $item = Item::where('item_slug', $request->item_slug)->first();
 
-        $cartDetails = CartDetail::where('cart_id', $cart->id)->get();
-        foreach($cartDetails as $cd){
-            if($cd->item_id == $request->item_id){
-                return redirect()->back()->with(['warning' => 'Item has been added']);
-            }
+        $check = CartDetail::where('cart_id', $cart->id)->where('item_id', $item->id)->first();
+
+        if($check){
+            return redirect()->back()->with(['warning' => 'Item has been added']);
         }
 
         $cartDetail = new CartDetail();
         $cartDetail->cart_id = $cart->id;
-        $cartDetail->item_id = $request->item_id;
+        $cartDetail->item_id = $item->id;
         $cartDetail->save();
 
         return redirect()->back()->with(['alert' => 'Success add Item to cart']);
@@ -48,8 +48,9 @@ class CartController extends Controller
 
     public function removeCart(Request $request)
     {
-        $cartDetail = CartDetail::where('item_id', $request->item_id)->delete();
+        $currCart = Cart::where('user_id', Auth::user()->id)->first();
+        CartDetail::where('item_id', $request->item_id)->where('cart_id', $currCart->id)->delete();
        
-        return $this->viewCart();
+        return redirect()->back()->with(['success', 'Success Delete Item from Cart']);
     }
   }

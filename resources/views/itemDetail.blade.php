@@ -52,22 +52,22 @@
             <div class="title item-name fs-3" style="margin-top: -230px;font-size:30px;">{{$item->item_name}}</div>
             <div class="title item-name" style="color:#396854; font-weight:200; font-size:16px;">{{$category->category_name}}</div>
             <div class="title1 item-price" style="margin-bottom: 15px; color:black; font-weight:200; font-size:18px;">IDR {{number_format($item->item_price)}}</div>
-            @if(Auth::check() and Auth::user()->role_id == '1')
-                <!-- Update -->
-                <a href="/admin/view_update_item/{{ $item->id }}" class="btn btn-success">Update</a>
-                <!-- Delete -->
-                <a href="/admin/delete_item/{{ $item->id }}" onclick=" return confirm('Are You Sure?')" class="btn btn-danger">Delete</a>
+                @can('isAdmin')
+                    <!-- Update -->
+                    <a href="/admin/view_update_item/{{ $item->item_slug }}" class="btn btn-success">Update</a>
+                    <!-- Delete -->
+                    <a href="/admin/delete_item/{{ $item->item_slug }}" onclick=" return confirm('Are You Sure?')" class="btn btn-danger">Delete</a>
                 @else
-                @if($item->item_status)
-                <form action="/cart" method="post" class="mx-4">
-                    @csrf
-                    <input type="hidden" name="item_id" value="{{ $item->id }}">
-                    <button type="submit" class="btn-prim btn my-3" style="width: 440px;height:35px;">Add to Cart</button>
-                </form> 
-                @else
-                <button type="disabled" disabled class="btn-danger btn my-3" style="width: 440px;height:35px;">Sold Out</button>
-                @endif
-                @endif
+                    @if($item->item_status)
+                        <form action="/cart" method="post" class="mx-4">
+                            @csrf
+                            <input type="hidden" name="item_slug" value="{{ $item->item_slug }}">
+                            <button type="submit" class="btn-prim btn my-3" style="width: 440px;height:35px;">Add to Cart</button>
+                        </form> 
+                    @else
+                        <button type="disabled" disabled class="btn-danger btn my-3" style="width: 440px;height:35px;">Sold Out</button>
+                    @endif
+                @endcan
                 <hr>
                 <div class="description" style="margin-bottom: 5px;">{{$item->description}}</div>
             </div> 

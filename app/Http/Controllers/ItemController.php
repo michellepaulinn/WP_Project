@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Item;
-use App\Models\ItemImage;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -14,12 +13,8 @@ class ItemController extends Controller
         return view('searchItem', ["items" => $items]);
     }
 
-    public function itemDetail($id){
-        // $item = Item::find($id);
-        // $itemImage = $item->itemImage();
-        // return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage,"name" ]);
-       
-        $item = Item::find($id);
+    public function itemDetail($slug){
+        $item = Item::where('item_slug', $slug)->first();
         $itemImage = $item->itemImages;
         $category = Category::where('id', $item->category_id)->first();
 
@@ -30,8 +25,9 @@ class ItemController extends Controller
         ]);
     }
 
-    public function getCategory($id){
-        $items = Item::where('category_id', $id)->paginate(12);
+    public function getCategory($slug){
+        $selectedCategory = Category::where('category_slug', $slug)->first();
+        $items = Item::where('category_id', $selectedCategory->id)->paginate(12);
         $categories = Category::all();
         
         return view('categoryItem', [

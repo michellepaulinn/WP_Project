@@ -5,7 +5,7 @@
 @section ('content')
 <div class="d-flex container justify-content-center p-5 flex-wrap gap-4">
     @foreach ($items as $item)
-    <a href="/item/{{ $item->id }}" class="m-auto">
+    <a href="/item/{{ $item->item_slug }}" class="m-auto">
         <div class="card border-1" style="color: #396854;background-color:#ede6db;">
             <img class="card-img-top p-3" src="/photos/{{ $item->itemImages->first()->item_image }}" alt="Card image cap">
             <div class="card-body text-center">

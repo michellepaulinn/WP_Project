@@ -27,8 +27,8 @@ use App\Http\Controllers\TransactionController;
 // baik sudah login maupun belum login, dapat akses route ke:
 Route::get('/', [PageController::class, 'homepage']);
 Route::get('/search', [ItemController::class, 'searchItem']);
-Route::get('/item/{id}', [ItemController::class, 'itemDetail']);
-Route::get('/category/{id}', [ItemController::class, 'getCategory']);
+Route::get('/item/{slug}', [ItemController::class, 'itemDetail']);
+Route::get('/category/{slug}', [ItemController::class, 'getCategory']);
 
 
 Route::middleware([VerifyLogout::class])->group(function () {
@@ -47,8 +47,8 @@ Route::middleware([VerifyLogin::class])->group(function () {
     //Frontend
     Route::middleware('can:isAdmin')->group(function () {
         Route::get('/admin/view_create_item', [AdminController::class, 'view_create']);
-        Route::get('/admin/view_update_item/{id}', [AdminController::class, 'view_update']);
-        Route::get('/admin/delete_item/{id}', [AdminController::class, 'delete_item']);
+        Route::get('/admin/view_update_item/{slug}', [AdminController::class, 'view_update']);
+        Route::get('/admin/delete_item/{slug}', [AdminController::class, 'delete_item']);
         Route::get('/admin/orders', [TransactionController::class, 'order_list']);
     
         //buat view admin untuk 

@@ -9,6 +9,12 @@
                 {{ session('successPayment') }}
             </div>
         @endif
+
+        @if (session('successItem'))
+            <div class="alert alert-success">
+                {{ session('successItem') }}
+            </div>
+        @endif
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 @php $i = 0; $x = 'active' @endphp
@@ -39,10 +45,9 @@
             <div class="text-center m-4"><h2 class="title">New Arrivals</h2></div>
             <div class="d-flex container m-2 justify-content-between flex-wrap">
                @foreach ($items as $item)
-                <a href="/item/{{ $item->id }}" class="mx-2 my-4">
+                <a href="/item/{{ $item->item_slug }}" class="mx-2 my-4">
                 <div class="card border-1" style="color: #396854;background-color:#ede6db;">
-                    <img class="card-img-top p-3" src="/photos/{{$item->itemImages->first()->item_image}}" alt="Card image cap">
-                    <div class="card-body text-center">
+                    <img class="card-img-top p-3" src="/photos/{{$item->itemImages->first()->item_image}}" alt="Card image cap"><div class="card-body text-center">
                         <h6 class="card-title">{{ $item->item_name }}</h6>
                         <p class="card-text">{{ number_format($item->item_price) }}</p>
                     </div>
@@ -73,7 +78,7 @@
             @foreach ($categories as $category)
                 <div class="mx-2 category">
                     <div class="d-flex card shadow-sm rounded text-white category-card">
-                        <a href="/category/{{ $category->id }}">
+                        <a href="/category/{{ $category->category_slug }}">
                             <img class="card-img ctg-img" src="{{$category->category_thumbnail}}" alt="{{ $category->category_name }}">
                             <div class="card-img-overlay m-auto dark-overlay d-flex justify-content-center align-items-center" >
                                 <h4 class="text-white text-center cart-title" >{{ $category->category_name }}</h4>
