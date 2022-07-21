@@ -48,24 +48,26 @@ Route::middleware([VerifyLogin::class])->group(function () {
     //Middleware admin 
     //Item
     //Frontend
-    Route::get('/admin/view_create_item', [AdminController::class, 'view_create']);
-    Route::get('/admin/view_update_item/{id}', [AdminController::class, 'view_update']);
-    Route::get('/admin/delete_item/{id}', [AdminController::class, 'delete_item']);
-    Route::get('/admin/orders', [TransactionController::class, 'order_list']);
-
-    //buat view admin untuk 
-    Route::get('/transaction/{id}', [TransactionController::class, 'view_transaction']);
-
-    //admin edit carousel
-    Route::get('/admin/view_slider_remove', [ImageSliderController::class, 'viewSliderRemove']);
-    Route::post('/admin/slider_remove_process', [ImageSliderController::class, 'removeSlider']);
-    Route::get('/admin/view_slider_add', [ImageSliderController::class, 'viewSliderAdd']);
-    Route::post('/admin/slider_add_process', [ImageSliderController::class, 'addSlider']);
-
-    //Backend
-    Route::post('/admin/create_item', [AdminController::class, 'create_item']);
-    Route::post('/admin/update_item/{id}', [AdminController::class, 'update_item']);
-    Route::post('/confirm-payment/{id}', [TransactionController::class, 'confirm_payment']);
+    Route::middleware('can:isAdmin')->group(function () {
+        Route::get('/admin/view_create_item', [AdminController::class, 'view_create']);
+        Route::get('/admin/view_update_item/{id}', [AdminController::class, 'view_update']);
+        Route::get('/admin/delete_item/{id}', [AdminController::class, 'delete_item']);
+        Route::get('/admin/orders', [TransactionController::class, 'order_list']);
+    
+        //buat view admin untuk 
+        Route::get('/transaction/{id}', [TransactionController::class, 'view_transaction']);
+    
+        //admin edit carousel
+        Route::get('/admin/view_slider_remove', [ImageSliderController::class, 'viewSliderRemove']);
+        Route::post('/admin/slider_remove_process', [ImageSliderController::class, 'removeSlider']);
+        Route::get('/admin/view_slider_add', [ImageSliderController::class, 'viewSliderAdd']);
+        Route::post('/admin/slider_add_process', [ImageSliderController::class, 'addSlider']);
+    
+        //Backend
+        Route::post('/admin/create_item', [AdminController::class, 'create_item']);
+        Route::post('/admin/update_item/{id}', [AdminController::class, 'update_item']);
+        Route::post('/confirm-payment/{id}', [TransactionController::class, 'confirm_payment']);
+    });
 
     Route::get('/cart', [CartController::class, 'viewCart']);
     Route::post('/cart', [CartController::class, 'addToCart']);
