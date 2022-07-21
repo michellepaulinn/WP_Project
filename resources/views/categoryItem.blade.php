@@ -3,7 +3,7 @@
 @section('title', 'Thrift Store')
 
 @section ('content')
-    <div class="container" style="padding-bottom: 50px; padding-top:18px;">
+    <div class="container" style="padding-bottom: 36px; padding-top:18px;">
         <div class="ShopCategory text-center d-flex">
             <div class="ctg d-flex justify-content-center w-100">
                 @foreach($categories as $ctg)
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="d-flex flex-row justify-content-between mx-5 my-2">
+        <div class="d-flex flex-row justify-content-between mx-5">
             <div class="d-flex align-items-center text-muted">
                 @if ($items->total() === 0)
                     Showing {{ $items->total() }} result
