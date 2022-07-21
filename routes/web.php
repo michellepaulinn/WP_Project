@@ -81,6 +81,8 @@ Route::middleware([VerifyLogin::class])->group(function () {
 
     //untuk admin update status
     Route::post('/transaction/{id}/update',[TransactionController::class, 'update_trans']);
+    //untuk user cancel order
+    Route::post('/cancel/{id}',[TransactionController::class, 'cancel_trans']);
     Route::get('/orders', [TransactionController::class, 'order_list']);
     Route::get('/transaction/{id}', [TransactionController::class, 'order_detail']);
     // Route::post('/transaction/checkout/proceed-payment/{id}', [TransactionController::class, 'confirm_payment']);

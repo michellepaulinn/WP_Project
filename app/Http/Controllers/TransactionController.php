@@ -44,6 +44,19 @@ class TransactionController extends Controller
         $transaction->save();
     }
 
+    public function cancel_trans($id){
+        // dd($id);
+        $transaction = Transaction::find($id);
+        $transaction->transaction_status_id = 6;
+        foreach($transaction->transactionDetails as $det){
+            $det->item->item_status = true;
+            $det->item->save();
+        }
+        $transaction->save();
+
+        return redirect()->back();
+    }
+
     public function order_list()
     {
         if (Gate::inspect('isAdmin', Auth::user())->allowed()) {
