@@ -17,6 +17,7 @@ class CreateItemsTable extends Migration
             $table->id();
             $table->foreignId('category_id');
             $table->string('item_name');
+            $table->string('item_slug');
             $table->integer('item_price');
             $table->longText('description');
             $table->boolean('item_status');
