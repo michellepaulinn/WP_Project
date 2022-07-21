@@ -12,9 +12,6 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ImageSliderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TransactionController;
-use App\Models\Checkout;
-use App\Models\ImageSlider;
-use Psy\VersionUpdater\Checker;
 
 /*
 |--------------------------------------------------------------------------
