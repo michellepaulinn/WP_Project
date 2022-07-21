@@ -60,8 +60,14 @@
                         @if($transaction->transactionStatus->id == 1)
                         <a href="/admin/orders"><button class="btn btn-primary">Back to Transaction List</button></a>
                         @elseif($transaction->transactionStatus->id == 2)
+                        <div>
                         <input type="hidden" name="total" id="total" value=3>
                         <button type="submit" class="btn btn-prim">Confirm Payment</button>
+                        </div>
+                        <div class="mt-2">
+                        <input type="hidden" name="total" id="total" value=6>
+                        <button type="submit" class="btn btn-danger">Reject Payment</button>
+                        </div>
                         @elseif($transaction->transactionStatus->id == 3)
                         <input type="hidden" name="total" id="total" value=4>
                         <button type="submit" class="btn btn-prim">Order is shipped</button>
