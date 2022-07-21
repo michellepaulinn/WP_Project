@@ -50,7 +50,7 @@
                 <h4 class="inline-block m-auto">{{$transaction->transactionStatus->status_name}}</h4>
                 <!-- Form -->
                 <div class="form" style="margin-bottom: 20px;">        
-                    <form action="checkout/proceed-payment/{{$transaction->id}}" method="POST">
+                    <form action="transaction/{{$transaction->id}}/update" method="POST">
                         @csrf
                         <div class="my-3">
                             <h6>Total:</h6>
@@ -61,18 +61,18 @@
                         <a href="/admin/orders"><button class="btn btn-primary">Back to Transaction List</button></a>
                         @elseif($transaction->transactionStatus->id == 2)
                         <div>
-                        <input type="hidden" name="total" id="total" value=3>
+                        <input type="hidden" name="stat" id="stat" value=3>
                         <button type="submit" class="btn btn-prim">Confirm Payment</button>
                         </div>
                         <div class="mt-2">
-                        <input type="hidden" name="total" id="total" value=6>
+                        <input type="hidden" name="stat" id="stat" value=6>
                         <button type="submit" class="btn btn-danger">Reject Payment</button>
                         </div>
                         @elseif($transaction->transactionStatus->id == 3)
-                        <input type="hidden" name="total" id="total" value=4>
+                        <input type="hidden" name="stat" id="stat" value=4>
                         <button type="submit" class="btn btn-prim">Order is shipped</button>
                         @elseif($transaction->transactionStatus->id == 4)
-                        <input type="hidden" name="total" id="total" value=5>
+                        <input type="hidden" name="stat" id="stat" value=5>
                         <button type="submit" class="btn btn-prim">Finish Transaction</button>
                         @endif
                     </form>
