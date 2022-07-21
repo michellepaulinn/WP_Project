@@ -20,11 +20,7 @@
                @foreach ($items as $item)
                 <a href="/item/{{ $item->id }}" class="m-3">
                 <div class="card border-1" style="background-color:#ede6db;">
-                    @foreach ($images as $image)
-                        @if ($image->item_id === $item->id)
-                            <img class="card-img-top p-3" src="/photos/{{$image->item_image}}" alt="Card image cap" width="272" height="240" style="width: 272px; height: 240;">                       
-                        @endif
-                    @endforeach
+                    <img class="card-img-top p-3" src="/photos/{{ $item->itemImages->first()->item_image }}" alt="Card image cap">
                     <div class="card-body text-center" style="color:#396854">
                         <h6 class="card-title">{{ $item->item_name }}</h6>
                         <p class="card-text">{{ number_format($item->item_price) }}</p>
@@ -34,6 +30,18 @@
                @endforeach
             </div>
         </div>
-        
+
+        <div class="d-flex flex-row justify-content-between mx-5 my-2">
+            <div class="d-flex align-items-center text-muted">
+                @if ($items->total() === 0)
+                    Showing {{ $items->total() }} result
+                @else
+                    Showing {{ $items->firstItem() }} to {{ $items->lastItem() }} of {{ $items->total() }} results
+                @endif
+            </div>
+            <div>
+                {{ $items->appends($_GET)->links() }}
+            </div>
+        </div>
     </div>
 @endsection

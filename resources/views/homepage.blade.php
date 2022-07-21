@@ -41,11 +41,7 @@
                @foreach ($items as $item)
                 <a href="/item/{{ $item->id }}" class="mx-2 my-4">
                 <div class="card border-1" style="color: #396854;background-color:#ede6db;">
-                    @foreach ($images as $image)
-                        @if ($image->item_id === $item->id)
-                            <img class="card-img-top p-3" src="/photos/{{$image->item_image}}" alt="Card image cap">                       
-                        @endif   
-                    @endforeach
+                    <img class="card-img-top p-3" src="/photos/{{$item->itemImages->first()->item_image}}" alt="Card image cap">
                     <div class="card-body text-center">
                         <h6 class="card-title">{{ $item->item_name }}</h6>
                         <p class="card-text">{{ number_format($item->item_price) }}</p>

@@ -25,7 +25,7 @@
             Showing {{ $items->firstItem() }} to {{ $items->lastItem() }} of {{ $items->total() }} results
         @endif
     </div>
-    <div class="">
+    <div>
         {{ $items->appends($_GET)->links() }}
     </div>
 </div>

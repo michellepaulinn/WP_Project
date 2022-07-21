@@ -11,9 +11,7 @@ class ItemController extends Controller
     public function searchItem(Request $req){
         $items = Item::where('item_name', 'LIKE', "%$req->keyword%")->paginate(12);
         
-        return view('searchItem',[
-            "items" => $items
-        ]);
+        return view('searchItem', ["items" => $items]);
     }
 
     public function itemDetail($id){
@@ -24,13 +22,21 @@ class ItemController extends Controller
         $item = Item::find($id);
         $itemImage = $item->itemImages;
         $category = Category::where('id', $item->category_id)->first();
-        return view('itemDetail',["item" =>$item, "itemImage" =>$itemImage,"category"=>$category]);
+
+        return view('itemDetail', [
+            "item" => $item, 
+            "itemImage" => $itemImage,
+            "category" => $category
+        ]);
     }
 
     public function getCategory($id){
-        $items = Item::where('category_id', $id)->get();
+        $items = Item::where('category_id', $id)->paginate(12);
         $categories = Category::all();
-        $images = ItemImage::all();
-        return view('categoryItem', ['categories'=>$categories,'items'=>$items,'images'=>$images]);
+        
+        return view('categoryItem', [
+            'categories' => $categories,
+            'items'=>$items,
+        ]);
     }
 }
