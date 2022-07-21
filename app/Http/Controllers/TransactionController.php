@@ -29,24 +29,28 @@ class TransactionController extends Controller
     //     return redirect()->back()->with('success', 'Transaction has been confirmed');
     // }
 
-    public function update_trans($id, Request $req){
+    public function update_trans($id, Request $req)
+    {
+        // dd($req);
         $transaction = Transaction::find($id);
         $transaction->transaction_status_id = $req->stat;
-        if($req->stat == 6){
-            foreach($transaction->transactionDetails as $det){
+        if ($req->stat == 6) {
+            foreach ($transaction->transactionDetails as $det) {
                 $det->item->item_status = true;
                 $det->item->save();
             }
-
         }
         $transaction->save();
+
+        return back();
     }
 
-    public function cancel_trans($id){
+    public function cancel_trans($id)
+    {
         // dd($id);
         $transaction = Transaction::find($id);
         $transaction->transaction_status_id = 6;
-        foreach($transaction->transactionDetails as $det){
+        foreach ($transaction->transactionDetails as $det) {
             $det->item->item_status = true;
             $det->item->save();
         }
@@ -63,7 +67,6 @@ class TransactionController extends Controller
             $trans = Auth::user()->transactions;
             // dd($trans);
         }
-
 
         return view('transaction-list', ['transaction' => $trans]);
     }
@@ -85,16 +88,4 @@ class TransactionController extends Controller
         }
     }
 
-    public function confirm_payment2($id)
-    {
-        $trx = Transaction::find($id)->first();
-        // dd($proofImage);
-
-        $proofImage = "";
-        $proofImage = $trx->proof;
-
-        return view('confirmation-page', [
-            'img' => $proofImage
-        ]);
-    }
 }

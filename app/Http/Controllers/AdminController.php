@@ -26,23 +26,40 @@ class AdminController extends Controller
             'item_price' => 'required',
             'description' => 'required',
             'category' => 'required',
-            'image' => 'required|file|image'
+            'image' => 'required',
+            'image.*' => 'image'
         ]);
-        $item = Item::create([
-            'item_name' => $req->item_name,
-            'item_slug' => Str::slug($req->item_name),
-            'item_price' => $req->item_price,
-            'description' => $req->description,
-            'category_id' => $req->category,
-            'item_status' => true
-        ]);
-        $extension = $req->image->extension();
-        $item_file_name = time() . '.' . $extension;
-        $req->image->move(public_path('photos'), $item_file_name);
-        $itemImage = ItemImage::insert([
-            'item_id' => $item->id,
-            'item_image' => $item_file_name
-        ]);
+        // $item = Item::insert([
+        //     'item_name' => $req->item_name,
+        //     'item_slug' => Str::slug($req->item_name),
+        //     'item_price' => $req->item_price,
+        //     'description' => $req->description,
+        //     'category_id' => $req->category,
+        //     'item_status' => true
+        // ]);
+
+        $item = new Item();
+        $item->item_name = $req->item_name;
+        $item->item_slug = Str::slug($req->item_name);
+        $item->item_price = $req->item_price;
+        $item->description = $req->description;
+        $item->category_id = $req->category;
+        $item->item_status = true;
+        $item->save();
+
+        //add images 
+        $i = 0;
+        foreach($req->file('image') as $image){
+            $extension = $image->extension();
+            $item_file_name = $i . time() . '.' . $extension;
+            $image->move(public_path('photos'), $item_file_name);
+
+            $itemImage = ItemImage::insert([
+                'item_id' => $item->id,
+                'item_image' => $item_file_name
+            ]);
+            $i++;
+        }
         // dd($item);
         if ($item && $itemImage) {
             return redirect('/')->with('successItem', 'Success Add Item');
@@ -67,7 +84,8 @@ class AdminController extends Controller
             'item_price' => 'required',
             'description' => 'required',
             'category' => 'required',
-            'image' => 'required|file|image'
+            'image' => 'required',
+            'image.*' => 'image'
         ]);
 
         $item = Item::findOrFail($id);
@@ -87,14 +105,19 @@ class AdminController extends Controller
             $image->delete();
         }
 
-        //Simpan Item Image baru 
-        $extension = $req->image->extension();
-        $item_file_name = time() . '.' . $extension;
-        $req->image->move(public_path('photos'), $item_file_name);
-        $itemImage = ItemImage::insert([
-            'item_id' => $id,
-            'item_image' => $item_file_name
-        ]);
+        //Simpan Item Image baru
+        $i = 0;
+        foreach($req->file('image') as $image){
+            $extension = $image->extension();
+            $item_file_name = $i . time() . '.' . $extension;
+            $image->move(public_path('photos'), $item_file_name);
+
+            $itemImage = ItemImage::insert([
+                'item_id' => $item->id,
+                'item_image' => $item_file_name
+            ]);
+            $i++;
+        }
 
         return redirect('/')->with('successItem', 'Success Update Item');
     }

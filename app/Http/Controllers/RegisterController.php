@@ -28,13 +28,6 @@ class RegisterController extends Controller
             return redirect()->back()->with('error','Password and Confirm Password must match');
         }
 
-        // $user = User::insert([
-        //     'name' => $request->name,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        //     'role_id' => '2'
-        // ])->id();
-
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;

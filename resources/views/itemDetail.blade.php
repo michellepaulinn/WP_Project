@@ -12,10 +12,8 @@
             {{ session('warning') }}
         </div>
     @endif
-
     <div style="min-height:73vh;">
-
-        
+        @include('search-bar')
         <div class="container d-flex justify-content-center py-5" style="padding-left: 50px;">
             <div id="carouselExampleControls" class="col flex-shrink carousel slide" data-bs-ride="carousel">
             {{-- <div class="col flex-shrink"width="500px";height="600px";> --}}

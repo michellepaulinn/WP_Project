@@ -70,7 +70,7 @@
                     </form>
                     <form action="/cancel/{{$transaction->id}}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-lg btn-danger">Cancel Order</button>
+                        <button type="submit" onclick=" return confirm('Are You Sure?')" class="btn btn-lg btn-danger">Cancel Order</button>
                     </form>
                 </div>
                 @endif

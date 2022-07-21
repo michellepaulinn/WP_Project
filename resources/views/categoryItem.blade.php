@@ -3,9 +3,10 @@
 @section('title', 'Thrift Store')
 
 @section ('content')
+    @include('search-bar')
     <div class="container" style="padding-bottom: 36px; padding-top:18px;">
-        <div class="ShopCategory text-center d-flex">
-            <div class="ctg d-flex justify-content-center w-100">
+        <div class="ShopCategory text-center d-flex my-4 ">
+            <div class="ctg d-flex justify-content-center ctg-border w-100" >
                 @foreach($categories as $ctg)
                     <div class="ctg-item mx-2">
                         <a style="color:#396854" href="/category/{{ $ctg->category_slug }}">{{ $ctg->category_name }}</a>
@@ -13,7 +14,6 @@
                 @endforeach
             </div>
         </div>
-
         <div class="newArrival">
             <div class="catName text-center m-4"><h2 style="color:#396854;"class="title">{{ $items[0]->category->category_name }}</h2></div>
             <div class="d-flex flex-wrap container m-2 justify-content-between">

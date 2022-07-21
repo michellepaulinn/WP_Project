@@ -19,6 +19,10 @@ class ImageSliderController extends Controller
     }
 
     public function addSlider(Request $request){
+        $request->validate([
+            'sliderImage'=>'required|mimes:jpg,png,svg,jpeg',
+        ]); 
+    
         $sliderImage = $request->file('sliderImage');
         $sliderName = $sliderImage->getClientOriginalName();
 
@@ -34,7 +38,7 @@ class ImageSliderController extends Controller
         $newSlider->save();
 
         $request->sliderImage->move(public_path('sliders'), $sliderName);
-        return redirect()->back()->with(['alert' => 'Success add Item to cart']);
+        return redirect()->back()->with(['alert' => 'Success Add Image']);
     }
 
     public function removeSlider(Request $request){
@@ -49,6 +53,6 @@ class ImageSliderController extends Controller
 
         $slider->delete();
 
-        return redirect()->back()->with(['alert' => 'Success add Item to cart']);
+        return redirect()->back()->with(['alert' => 'Success Delete Image']);
     }
 }

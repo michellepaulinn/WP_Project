@@ -12,6 +12,13 @@
             {{ session('warning') }}
         </div>
     @endif
+
+    @error('sliderImage')
+        <div class="alert alert-warning">
+            {{ $message }}
+        </div>
+    @enderror
+
     <div class="align-items-center d-flex" style="min-height:73vh;">
 
         <div class="container-fluid py-3 d-flex justify-content-center col-12 col-md-8 col-lg-6 col-xl-5"  >

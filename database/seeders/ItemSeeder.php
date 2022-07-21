@@ -23,7 +23,7 @@ class ItemSeeder extends Seeder
                     'item_slug' => 'crop-cardigan',
                     'item_price' => 50000,
                     'description' => ' contoh description ',
-                    'item_status' => false
+                    'item_status' => true
                 ],
                 [
                     'category_id' => 1,

@@ -99,6 +99,20 @@
             height: 240px;
             object-fit: cover;
         }
+        .page-item.active .page-link{
+                background-color: #AB6954!important;
+                border-color: #AB6954 !important;
+        }
+        .pagination>li>a{
+            background-color: #ede6db;
+            color: #303030;
+        }
+        .pagination>li>a:hover{
+            color: #AB6954;
+        }
+        .ctg-border{
+            border-bottom:3px solid #ede6db;
+        }
     </style>
   </head>
   <body>
@@ -107,14 +121,7 @@
             <a class="title nav-item navbar-brand" href="/" style="text-decoration: none;">
                 <h3 class="">Thrift Store</h3>
             </a>
-            <div class="search nav-item flex-grow-1 px-4 mx-4">
-                <form action="/search" class="d-flex flex-row" method="GET">
-                    <input type="search" class="form-control pr-5 pl-3 mr-1" placeholder="Celana, Baju, ..." aria-label="Search" name="keyword">
-                    <button class="btn " type="submit">
-                        <span class="material-icons" style="color:#396854;">search</span>
-                    </button>
-                </form>
-            </div>
+            
             <div class="d-flex nav-item gap-3">
                 <div class="cart px-4 align-self-center">
                     @guest   

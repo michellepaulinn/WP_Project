@@ -3,7 +3,16 @@
 @section('title','Transaction')
 
 @section('content')
-    <div class="container" style="min-height:73vh">
+    @if (session('alert'))
+        <div class="alert alert-success">
+            {{ session('alert') }}
+        </div>
+    @elseif (session('warning'))
+        <div class="alert alert-warning">
+            {{ session('warning') }}
+        </div>
+    @endif
+    <div class="container" style="min-height:75vh">
         <h3 class="bold py-2" style="color: #396854;font-weight:300;">Transaction Detail</h3>
         <!-- {{-- @dd($transaction) --}} -->
         <div class="content d-flex justify-content-between row">
@@ -50,33 +59,34 @@
                 <h4 class="inline-block m-auto">{{$transaction->transactionStatus->status_name}}</h4>
                 <!-- Form -->
                 <div class="form" style="margin-bottom: 20px;">        
-                    <form action="transaction/{{$transaction->id}}/update" method="POST">
+                    <form action="{{$transaction->id}}/update" method="POST">
                         @csrf
                         <div class="my-3">
                             <h6>Total:</h6>
                             <h2>IDR {{number_format($total )}}</h2>
                         </div>
-                        
+                    </form>
+                    <form action="{{$transaction->id}}/update" method="POST">
+                        @csrf
                         @if($transaction->transactionStatus->id == 1)
-                        <a href="/admin/orders"><button class="btn btn-primary">Back to Transaction List</button></a>
+                            <a href="/admin/orders"><button class="btn btn-primary">Back to Transaction List</button></a>
                         @elseif($transaction->transactionStatus->id == 2)
-                        <div>
-                        <input type="hidden" name="stat" id="stat" value=3>
-                        <button type="submit" class="btn btn-prim">Confirm Payment</button>
-                        </div>
-                        <div class="mt-2">
-                        <input type="hidden" name="stat" id="stat" value=6>
-                        <button type="submit" class="btn btn-danger">Reject Payment</button>
-                        </div>
+                                @csrf
+                                <input type="hidden" name="stat" id="stat" value=3> 
+                                <button type="submit" onclick=" return confirm('Are You Sure?')" class="btn btn-prim">Confirm Payment</button>
+                            </form>
+                            <form action="{{$transaction->id}}/update" method="POST" class="mt-2">
+                                @csrf
+                                <input type="hidden" name="stat" id="stat" value=6>
+                                <button type="submit" onclick=" return confirm('Are You Sure?')" class="btn btn-danger">Reject Payment</button>
                         @elseif($transaction->transactionStatus->id == 3)
-                        <input type="hidden" name="stat" id="stat" value=4>
-                        <button type="submit" class="btn btn-prim">Order is shipped</button>
+                            <input type="hidden" name="stat" id="stat" value=4>
+                            <button type="submit" class="btn btn-prim">Order is shipped</button>
                         @elseif($transaction->transactionStatus->id == 4)
-                        <input type="hidden" name="stat" id="stat" value=5>
-                        <button type="submit" class="btn btn-prim">Finish Transaction</button>
+                            <input type="hidden" name="stat" id="stat" value=5>
+                            <button type="submit" class="btn btn-prim">Finish Transaction</button>
                         @endif
                     </form>
-
                 </div>
             </div>
     </div>

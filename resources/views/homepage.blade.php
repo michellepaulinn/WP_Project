@@ -3,7 +3,8 @@
 @section('title', 'Thrift Store')
 
 @section ('content')
-    <div class="container" style="padding-bottom: 50px; padding-top:40px;">
+    <div class="container" style="padding-bottom: 50px;">
+        @include('search-bar')
         @if (session('successPayment'))
             <div class="alert alert-success">
                 {{ session('successPayment') }}

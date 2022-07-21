@@ -39,7 +39,7 @@
                 </select>
                 <div class="form-group mt-4">
                     <label for="image">Item Image</label>
-                    <input type="file" name="image" id="image" class="form-control-file">
+                    <input type="file" name="image[]" multiple id="image" class="form-control-file">
                     @error('image')
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
