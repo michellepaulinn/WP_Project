@@ -62,11 +62,11 @@
                 <h5>Status:</h5>
                 <p class="fw-bold">{{$transaction->transactionStatus->status_name}}</p>
                 @if ($transaction->transactionStatus->id == 1)
-                <div class="d-flex gap-4">
+                <div class="d-flex gap-4" style="margin-bottom: 5px;">
                     <form action="/proceed-payment/{{$transaction->id}}" method="get">
                         @csrf
                         <input type="hidden" name="total" value="{{$total}}">
-                        <button class="btn btn-prim btn-outline-light btn-lg px-5" type="submit">Make Payment</button>
+                        <button class="btn btn-prim btn-outline-light btn-lg px-3" type="submit">Make Payment</button>
                     </form>
                     <form action="/cancel/{{$transaction->id}}" method="POST">
                         @csrf

@@ -3,8 +3,8 @@
 @section('title','Checkout')
 
 @section('content')
-    <div class="container p-2">
-        <h5>Checkout Detail</h5>
+    <div class="container p-2" style="min-height: 70vh;">
+        <h5 style="margin-top: 5px;">Checkout Detail</h5>
         <!-- {{-- @dd($transaction) --}} -->
         <div class="content d-flex justify-content-between row">
         <!-- Cards Product -->
