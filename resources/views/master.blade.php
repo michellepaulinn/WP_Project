@@ -183,19 +183,33 @@
     <div class="" style="background-color:#ede6db;">
         <footer class="d-flex flex-wrap justify-content-between align-items-center p-4 border-top" style="background-color: #ede6db">
             <div class="col-md-4 d-flex align-items-center gap-2" style="background-color: #ede6db">
-                <div class="">
-                    <a href="/" class="title">
+                <div class="justify-content-center">
+                    {{-- <a href="/" class="title">
                         <h3>Thrift Store</h3>
-                    </a>
+                    </a> --}}
+                    <h3 style="color:#396854;font-weight:300;">Find Us</h3>
+                    <div class="d-flex flex-row">
+                        <span class="material-icons" style="color:#396854;">mail</span> 
+                        <h5 style="margin-left: 10px;">thriftstorePPTI10@gmail.com</h5>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <span class="material-icons" style="color:#396854;">map</span> 
+                        <h5 style="margin-left: 10px;">Jl. Pakuan No.3, Sumur Batu, Babakan Madang, Bogor Regency, West Java 16810</h5>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <span class="material-icons" style="color:#396854;">call</span> 
+                        <h5 style="margin-left: 10px;">+6285210107743</h5>
+                    </div>
                 </div>
-                <div><span class="text-muted mx-4">  &copy Thrift Company </span></div>
+
             </div>
-      
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            
+            {{-- <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
                 <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
                 <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
                 <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-            </ul>
+            </ul> --}}
+            <div style="margin-top: 120px;"><span class="text-muted">  &copy Thrift Company </span></div>
         </footer>
     </div>
 
